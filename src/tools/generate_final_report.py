@@ -36,6 +36,8 @@ from run_context import get_context_proposal_id
 
 from report_limits import MAX_AGGREGATED_REPORT_CHARS, clip_markdown_total_chars
 
+from post_processing import _gate_reason_zh
+
 # ========= 路径配置 =========
 BASE_DIR = Path(__file__).resolve().parents[2]   # 项目根（包含 src/）
 DATA_DIR = BASE_DIR / "src" / "data"
@@ -169,9 +171,17 @@ def build_executive_summary(expert_json: dict) -> str:
     lines.append(f"- **信心度**：{_fmt_float(conf, 3)}")
     qg = overall.get("quality_gate") or {}
     if qg:
-        lines.append(f"- **质量闸门**：{'通过' if qg.get('pass') else '未通过'}")
+        hard = qg.get("fail_reasons") or qg.get("reasons") or []
+        ok = bool(qg.get("pass")) and not hard
+        lines.append(f"- **质量闸门**：{'通过' if ok else '未通过'}")
         lines.append(f"- **选中覆盖率**：{_fmt_float(qg.get('selected_coverage_ratio', 0.0), 3)}")
+        lines.append(f"- **一致性（consistency_ratio）**：{_fmt_float(qg.get('consistency_ratio', 0.0), 3)}")
         lines.append(f"- **解析成功率（估计）**：{_fmt_float(qg.get('parse_success_ratio', 0.0), 3)}")
+        ws = qg.get("warnings") or []
+        if ws:
+            lines.append(
+                f"- **质量告警（不否决结论）**：{', '.join(_gate_reason_zh(w) for w in ws)}"
+            )
     lines.append("")
     lines.append("> **评分区间说明（供非技术评审参考）**：")
     lines.append("> - ≥ 0.62：整体条件较好，可在控制风险前提下推进；")

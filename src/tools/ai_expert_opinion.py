@@ -25,6 +25,8 @@ import requests
 from dotenv import load_dotenv
 from local_openai import getenv_model, resolve_openai_api_key, resolve_openai_base_url
 
+from post_processing import _gate_reason_zh
+
 # ----------------- 路径与常量 -----------------
 BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "src" / "data"
@@ -370,10 +372,46 @@ FORBID_PATTERNS = [
 ]
 
 
+def _strip_metric_parentheticals(s: str) -> str:
+    """
+    安全删除包含内部指标标签的括号片段，避免出现“(=0.00, =1.00)”残片。
+    例如：
+      "要点充分（auth=0.00, cover=0.00, align=1.00）" -> "要点充分"
+    """
+    if not s:
+        return ""
+    metric_keys = (
+        "auth", "authority", "cover", "coverage", "align", "alignment",
+        "drift", "confidence", "overall_score", "jaccard"
+    )
+    key_alt = "|".join(metric_keys)
+    # 中文全角括号
+    s = re.sub(
+        rf"（[^）]*\b(?:{key_alt})\b[^）]*）",
+        "",
+        s,
+        flags=re.IGNORECASE,
+    )
+    # 英文半角括号
+    s = re.sub(
+        rf"\([^)]*\b(?:{key_alt})\b[^)]*\)",
+        "",
+        s,
+        flags=re.IGNORECASE,
+    )
+    return s
+
+
 def clean_text(s: str) -> str:
     s = (s or "").replace("\u0000", "").strip()
+    s = _strip_metric_parentheticals(s)
     for pat in FORBID_PATTERNS:
         s = re.sub(pat, "", s, flags=re.IGNORECASE)
+    # 清理删词后可能残留的“=0.00”等碎片
+    s = re.sub(r"[（(]?\s*=\s*-?\d+(?:\.\d+)?(?:\s*,\s*=\s*-?\d+(?:\.\d+)?)*\s*[)）]?", "", s)
+    # 清理重复标点与孤立括号
+    s = re.sub(r"[（(]\s*[)）]", "", s)
+    s = re.sub(r"[：:]{2,}", "：", s)
     s = re.sub(r"\s{2,}", " ", s)
     s = s.replace("（）", "").replace("()", "")
     return s.strip()
@@ -533,7 +571,8 @@ def build_overall_from_dims(dim_blocks: Dict[str, Any],
 
         # 0) 质量闸门优先：数据质量不足时不输出硬性 go/no-go
         if not gate_ok:
-            reasons = ", ".join(gate_detail.get("reasons") or []) or "quality_gate_failed"
+            hard = gate_detail.get("fail_reasons") or gate_detail.get("reasons") or []
+            reasons = ", ".join(hard) or "quality_gate_failed"
             return (
                 "INSUFFICIENT_EVIDENCE",
                 f"当前轮次的数据质量闸门未通过（{reasons}），证据充分性不足，不建议直接给出 GO/NO-GO。"
@@ -694,11 +733,21 @@ def render_markdown(opinion: Dict[str, Any]) -> str:
     qg = overall.get("quality_gate") or {}
     if qg:
         lines.append("**质量闸门回显**")
-        lines.append(f"- 闸门状态：{'PASS' if qg.get('pass') else 'FAIL'}")
+        hard = qg.get("fail_reasons") or qg.get("reasons") or []
+        ok = bool(qg.get("pass")) and not hard
+        lines.append(f"- 闸门状态：{'PASS' if ok else 'FAIL'}")
         lines.append(f"- 选中覆盖率：{float(qg.get('selected_coverage_ratio', 0.0)):.1%}")
+        lines.append(f"- 一致性（consistency_ratio）：{float(qg.get('consistency_ratio', 0.0)):.3f}")
         lines.append(f"- 解析成功率（估计）：{float(qg.get('parse_success_ratio', 0.0)):.1%}")
-        if qg.get("reasons"):
-            lines.append(f"- 闸门失败原因：{', '.join(qg.get('reasons') or [])}")
+        if hard:
+            lines.append(
+                f"- 闸门失败原因：{', '.join(_gate_reason_zh(x) for x in hard)}"
+            )
+        ws = qg.get("warnings") or []
+        if ws:
+            lines.append(
+                f"- 质量告警（不否决结论）：{', '.join(_gate_reason_zh(w) for w in ws)}"
+            )
         lines.append("")
     if overall.get("verdict"):
         lines.append(f"**总体结论（verdict）**：{overall['verdict']}")

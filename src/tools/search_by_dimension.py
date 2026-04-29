@@ -269,7 +269,14 @@ def build_base_clause(dim_name: str, qcfg: dict, qsets_meta: dict):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--fast", action="store_true", help="仅检索每维前2个问题（调试模式）")
-parser.add_argument("--proposal-id", type=str, default="", help="可选：显式指定 proposal_id")
+parser.add_argument(
+    "--proposal-id",
+    "--proposal_id",
+    dest="proposal_id",
+    type=str,
+    default="",
+    help="可选：显式指定 proposal_id",
+)
 args = parser.parse_args()
 
 # 1) 读取清洗后的维度（固定路径）

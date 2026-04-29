@@ -42,6 +42,7 @@ from typing import Dict, Any, List, Tuple, Optional
 from dotenv import load_dotenv
 from run_context import get_context_proposal_id
 from local_openai import maybe_probe_local_inference
+from generate_questions import clip_question_text
 
 # ========== 环境 & 路径 ==========
 load_dotenv(override=True)
@@ -100,22 +101,24 @@ def provider_caps(provider: str) -> Dict[str, Any]:
 
 CONF_MIN, CONF_MAX = 0.50, 0.92
 MAX_LIST_LEN = 10
-# 与 generate_questions 的 MAX_QUESTION_CHARS 对齐；override 用环境变量。
-MAX_PROMPT_QUESTION_CHARS = int(os.getenv("MAX_PROMPT_QUESTION_CHARS", "30"))
-# answer 每条分点正文、claims / evidence_hints / general_insights 每一条目各自允许的字符上限（Python len）；可用 MAX_REVIEW_CHARS 或 MAX_ANSWER_CHARS 覆盖。
+# 与 generate_questions 的 MAX_QUESTION_CHARS 默认对齐；override 用环境变量。
+MAX_PROMPT_QUESTION_CHARS = int(os.getenv("MAX_PROMPT_QUESTION_CHARS", "60"))
+# 每条分点 / claims / evidence_hints / general_insights 各自的字符上限（Python len）。
+# 主约束：由答题 LLM 在约此字数内写「语义完整」的一条；程序侧仅在超长时按句读兜底截断（见 _clip_answer_to_max_chars）。
+# 可用 MAX_REVIEW_CHARS 或 MAX_ANSWER_CHARS 覆盖。
 MAX_REVIEW_CHARS = int(os.getenv("MAX_REVIEW_CHARS") or os.getenv("MAX_ANSWER_CHARS") or "150")
 MAX_ANSWER_CHARS = MAX_REVIEW_CHARS
 
 
 def _clip_answer_to_max_chars(text: str, max_chars: int) -> str:
-    """将 answer 压到 max_chars 以内（字符数，中英文均按 Python len）。"""
+    """将单行正文压到 max_chars 以内；超长时优先在句读处截断，避免半句话（兜底用，不应替代模型自控篇幅）。"""
     s = (text or "").strip()
     if max_chars <= 0:
         return ""
     if len(s) <= max_chars:
         return s
     cut = s[:max_chars].rstrip()
-    for sep in ("。", ".", "；", ";", "，", ",", "\n"):
+    for sep in ("。", ".", "？", "?", "！", "!", "；", ";", "，", ",", "\n"):
         i = cut.rfind(sep)
         if i >= max(20, max_chars // 3):
             return cut[: i + 1].strip()
@@ -125,16 +128,8 @@ def _clip_answer_to_max_chars(text: str, max_chars: int) -> str:
 
 
 def _clip_plain_to_max_chars(text: str, max_chars: int) -> str:
-    """单条条目字符串压到 max_chars（claims 等列表的一条；不做整段分点逻辑）。"""
-    s = (text or "").strip()
-    if max_chars <= 0:
-        return ""
-    if len(s) <= max_chars:
-        return s
-    cut = s[:max_chars].rstrip()
-    if max_chars >= 2:
-        return cut[: max_chars - 1].rstrip() + "…"
-    return cut[:max_chars]
+    """claims 等列表的单条：与分点正文共用句读优先截断。"""
+    return _clip_answer_to_max_chars(text, max_chars)
 
 
 def _clip_each_list_item_max_chars(items: List[str], max_chars: int) -> List[str]:
@@ -280,10 +275,7 @@ def load_dimension_context(pid: str, dim_file: Optional[Path]) -> Dict[str, str]
 # ========== 问题集 & 监管提示 ==========
 def get_q_list(block: Any) -> List[str]:
     def _clip_q(s: str) -> str:
-        q = str(s or "").strip()
-        if len(q) <= MAX_PROMPT_QUESTION_CHARS:
-            return q
-        return q[:MAX_PROMPT_QUESTION_CHARS].rstrip("，。；：;,. ") + "。"
+        return clip_question_text(str(s or "").strip(), MAX_PROMPT_QUESTION_CHARS, "zh")
 
     if isinstance(block, dict) and isinstance(block.get("questions"), list):
         return [_clip_q(q) for q in block["questions"] if isinstance(q, str) and _clip_q(q)]
@@ -363,19 +355,19 @@ def build_system_prompt(domain: str) -> str:
         + "6）除 JSON 结构所需的英文字段名外，所有自然语言内容必须使用中文；专有名词可保留必要外文缩写；"
         + "7）你需要在回答中补充“行业基准对比”和“类似项目常见的坑与证据要求”等通识内容，"
         + "   但这些通识部分必须明确表述为“行业普遍情况/一般建议”，不得写成项目已经达成的事实；"
-        + f"8）主字段 answer：凡采用「1. … / 2. …」分点，每一行中分点正文（不含行首编号）均不得超过 {MAX_REVIEW_CHARS} 个字符；"
-        + f"9）字段 claims、evidence_hints、general_insights：数组中每一条字符串均不得超过 {MAX_REVIEW_CHARS} 个字符；"
-        + "   细节仍写入这三项，但每条都要精炼。"
+        + f"8）主字段 answer：凡采用「1. … / 2. …」分点，每一行中分点正文（不含行首编号）建议在约 {MAX_REVIEW_CHARS} 字内写成一小段**语义完整**的表述（自然收束，勿写到半截就停）；"
+        + f"9）字段 claims、evidence_hints、general_insights：数组中每一条字符串同样不超过 {MAX_REVIEW_CHARS} 字，且须各自成句、意思完整；"
+        + "   宁可删修饰、合并表述，也不要依赖程序事后截断来「凑字数」。"
     )
 
 def _schema_structured() -> str:
     return f"""
 请严格返回 JSON 对象，键名固定（键名保持英文以便程序解析；所有字符串值必须为中文）：
 {{
-  "answer": "分点主回答（中文；每一行分点正文各自不超过 {MAX_REVIEW_CHARS} 字，简明扼要；行首「1.」编号不计入该上限）",
-  "claims": ["每条关键可验证结论各自不超过 {MAX_REVIEW_CHARS} 字"],
-  "evidence_hints": ["每条支撑/核查线索各自不超过 {MAX_REVIEW_CHARS} 字"],
-  "general_insights": ["每条行业通识短句各自不超过 {MAX_REVIEW_CHARS} 字"],
+  "answer": "分点主回答（中文；每一行分点正文各自在约 {MAX_REVIEW_CHARS} 字内写完整再收束；行首「1.」编号不计入该上限）",
+  "claims": ["每条关键可验证结论：不超过 {MAX_REVIEW_CHARS} 字且语义完整"],
+  "evidence_hints": ["每条支撑/核查线索：不超过 {MAX_REVIEW_CHARS} 字且语义完整"],
+  "general_insights": ["每条行业通识短句：不超过 {MAX_REVIEW_CHARS} 字且语义完整"],
   "topic_tags": ["维度内的小主题标签（中文）"],
   "confidence": 0.0,
   "caveats": "限制/注意事项（若无可空）"
@@ -393,8 +385,8 @@ def _unified_variant_instructions() -> str:
 - **综合**：结合该维度「当前方案/优势/问题/建议」做整体评价；区分提案事实 vs 行业通识（通识须用「通常/一般而言」等措辞）。
 - **风险**：点名不确定性、信息缺口以及潜在合规/技术风险线索；必要时指出「现有材料未见 X」而非绝对否定。
 - **落地**：在尊重提案当前状态前提下，简述可执行的下一步或可补充的证据类型；不得假设尚未完成的工作已达成。
-- **篇幅**：answer 宜用 2–4 条短分点，使上述三方面在简练篇幅内均被照顾到（无需机械地各占一条）；每条分点正文≤{mc} 字；
-  claims / evidence_hints / general_insights 亦每条≤{mc} 字；在 general_insights 末条可附简短免责声明式表述（仍为通识）。
+- **篇幅**：answer 宜用 2–4 条短分点，使上述三方面在简练篇幅内均被照顾到（无需机械地各占一条）；每条分点正文≤{mc} 字且须**一整句意思完整**（超长时优先压缩措辞，勿写到一半）；
+  claims / evidence_hints / general_insights 亦每条≤{mc} 字且各自完整；在 general_insights 末条可附简短免责声明式表述（仍为通识）。
 """.strip()
 
 def build_single_prompt(
@@ -421,7 +413,7 @@ def build_single_prompt(
 
 回答要求：
 - 语言：中文（专有名词可保留必要外文缩写）；
-- **硬性长度**：answer 中每一行分点正文（不含行首「1.」类编号）分别不得超过 **{MAX_REVIEW_CHARS}** 个字符；claims、evidence_hints、general_insights 中**每一条**分别不得超过 **{MAX_REVIEW_CHARS}** 个字符；务必简明扼要。\n
+- **长度（模型自控为主）**：每一行分点正文（不含行首「1.」类编号）与 claims / evidence_hints / general_insights **每一条**均建议在 **{MAX_REVIEW_CHARS}** 字内写**完整语义**（自然结尾）；超长时删套话、合并表述；程序仅在极端超长时按句读兜底截断，不得依赖截断来收尾。\n
 - 结构：answer 仅用 **2–4 条**短分点，每条一行；谢绝长篇铺垫。\n
 - 内容优先级（最短篇幅）：\n
   1）一两句话概括本项目在该维度最关键的亮点或短板（紧扣[提案事实]）；\n
@@ -465,8 +457,8 @@ def build_batch_prompt(
 {_unified_variant_instructions()}
 
 统一回答要求：
-- **每道题的 answer**：2–4 条短分点；**每一行分点正文（不含编号）各不得超过 {MAX_REVIEW_CHARS} 个字符**；简明扼要、切中要害。
-- 细颗粒展开写入 claims / evidence_hints；各题每一项 claims / evidence_hints / general_insights **各自**不超过 **{MAX_REVIEW_CHARS}** 个字符；避免在 answer 里长篇铺陈。
+- **每道题的 answer**：2–4 条短分点；**每一行分点正文（不含编号）各约 {MAX_REVIEW_CHARS} 字内写完整**；简明扼要、切中要害；禁止写到半截。
+- 细颗粒展开写入 claims / evidence_hints；各题每一项 claims / evidence_hints / general_insights **各自**不超过 **{MAX_REVIEW_CHARS}** 字且**每条意思完整**；避免在 answer 里长篇铺陈。
 - 每道题的 claims：少量可核对短句，优先基于[提案事实]。
 - 每道题的 evidence_hints：少量线索；忌空泛套话。
 - 每道题的 general_insights：少量短句通识；末条可为免责式总结。\n
@@ -483,8 +475,8 @@ def build_refine_prompt(candidate_obj: Dict[str, Any], proposal_context: str, di
     original = json.dumps(candidate_obj, ensure_ascii=False, indent=2)
     return f"""
 请在不引入任何超出【提案事实】的新信息的前提下，对下面的结构化回答做一次快速自我复核：
-- **answer**：每一行分点正文（不含编号）各不超过 **{MAX_REVIEW_CHARS}** 个字符；删冗余套话；
-- **claims、evidence_hints、general_insights**：**每一条**各自不超过 **{MAX_REVIEW_CHARS}** 个字符；删冗余条；
+- **answer**：每一行分点正文（不含编号）各不超过 **{MAX_REVIEW_CHARS}** 字；在限制内保持**句意完整**，删冗余套话；
+- **claims、evidence_hints、general_insights**：**每一条**各自不超过 **{MAX_REVIEW_CHARS}** 字且**语义完整**；删冗余条；
 - 删改过于武断或缺乏依据的强结论；
 - 若某条结论在【提案事实】中找不到依据，请改写为“需要补充的材料/信息”；
 - 细节搬迁：过长叙述移到 claims / evidence_hints；answer 只保留短打；
@@ -1271,8 +1263,8 @@ def ask_model_single(
         if not _validate_candidate_dict(cand_norm):
             compact_note = (
                 "\n\n=== 二次修复约束 ===\n"
-                f"answer 每一行分点正文（不含编号）各不超过 {MAX_REVIEW_CHARS} 个字符；"
-                f"claims、evidence_hints、general_insights 中每一条各自不超过 {MAX_REVIEW_CHARS} 个字符；"
+                f"answer 每一行分点正文（不含编号）各不超过 {MAX_REVIEW_CHARS} 字且须语义完整；"
+                f"claims、evidence_hints、general_insights 每一条各自不超过 {MAX_REVIEW_CHARS} 字且须完整成句；"
                 "仅输出合法 JSON。"
             )
             repaired2 = _repair_to_schema_json(
@@ -1576,6 +1568,8 @@ def parse_args():
     )
     ap.add_argument(
         "--proposal-id",
+        "--proposal_id",
+        dest="proposal_id",
         type=str,
         default="",
         help="指定提案 ID；不填则自动检测 data/extracted 最近目录名",

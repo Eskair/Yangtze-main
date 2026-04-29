@@ -1,21 +1,7 @@
 {
   "team": [
     {
-      "text": "文本中出现“浙江大学 杨国青团队”。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "org_structure",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本列出“技术咨询委员会”成员包括“吴朝晖 院士”。",
+      "text": "浙江大学杨国青团队负责该项目的开发和研发。",
       "dimensions": [
         "team"
       ],
@@ -29,7 +15,7 @@
       }
     },
     {
-      "text": "文本列出“技术咨询委员会”成员包括“李骏 院士”。",
+      "text": "该项目的核心团队包括吴朝晖院士、李骏院士、何积丰院士、邓伟文教授、潘之杰教授",
       "dimensions": [
         "team"
       ],
@@ -43,181 +29,11 @@
       }
     },
     {
-      "text": "文本列出“技术咨询委员会”成员包括“何积丰 院士”。",
+      "text": "浙江大学智能汽车研究中心成立于2001年",
       "dimensions": [
         "team"
       ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本列出“技术咨询委员会”成员包括“邓伟文 教授”。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本列出“技术咨询委员会”成员包括“潘之杰 教授”。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "技术咨询委员会相关机构在文本中出现“浙江大学、清华大学、华东师范大学”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "技术咨询委员会成员包括吴朝晖（院士）。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "技术咨询委员会成员包括李骏（院士）。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "技术咨询委员会成员包括何积丰（院士）。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "技术咨询委员会成员包括邓伟文（教授）。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "技术咨询委员会成员包括潘之杰（教授）。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "本项目核心团队成员杨国青担任首席执行官。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "杨国青为“浙江大学智能汽车研究中心副主任”，并为“CCF抗恶劣计算专委会委员”。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "杨国青“主持多项国家重大专项”，并在国内首创“面向汽车控制的基础支撑软件架构”等内容。",
-      "dimensions": [
-        "team",
-        "innovation"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "杨国青于2014年获“国家技术发明二等奖”。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
+      "type": "other",
       "primary_dimension": "team",
       "meta": {
         "suspect_numeric": false,
@@ -228,95 +44,7 @@
       }
     },
     {
-      "text": "杨国青的职责为“项目总体规划，应用模式推广”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "本项目核心团队成员潘之杰担任总工程师。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "潘之杰为“国家千人计划特聘专家”，并为“浙江大学智能汽车研究中心主任”。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "潘之杰主要研究方向包括“智能电动车底盘线控技术、智能驾驶、自动驾驶、智慧城市智慧交通”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "潘之杰曾获“中国汽车工业科学技术奖一等奖”“全国工商联科学技术进步奖一等奖”“浙江省科学技术奖一等奖”。",
-      "dimensions": [
-        "team"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "潘之杰的职责为“技术方向把控，关键技术创新”。",
-      "dimensions": [
-        "team",
-        "innovation",
-        "strategy"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "浙江大学智能汽车研究中心面向汽车智能化领域。",
+      "text": "该中心的核心团队包括杨国青、潘之杰等人",
       "dimensions": [
         "team",
         "objectives"
@@ -325,18 +53,62 @@
       "primary_dimension": "team",
       "meta": {
         "proposal_id": "tzcl",
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
+      }
+    },
+    {
+      "text": "杨国青是浙江大学智能汽车研究中心副主任",
+      "dimensions": [
+        "team"
+      ],
+      "type": "other",
+      "primary_dimension": "team",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
+      }
+    },
+    {
+      "text": "潘之杰是浙江大学智能汽车研究中心总工程师",
+      "dimensions": [
+        "team",
+        "objectives"
+      ],
+      "type": "other",
+      "primary_dimension": "team",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
+      }
+    },
+    {
+      "text": "浙江大学智能汽车研究中心是面向汽车智能化领域，致力于车辆控制技术、物联网技、人工智能技术和大数据技术的研发及应用推广。",
+      "dimensions": [
+        "team",
+        "strategy"
+      ],
+      "type": "team_member",
+      "primary_dimension": "team",
+      "meta": {
+        "proposal_id": "tzcl",
         "chunk_index": 2,
         "char_start": 2800,
         "char_end": 4600
       }
     },
     {
-      "text": "团队连续4次承担国家重大专项课题。",
+      "text": "2005年开始的汽车电是无人驾驶平台子核心技术研发的基础。",
       "dimensions": [
-        "feasibility",
-        "team"
+        "team",
+        "strategy"
       ],
-      "type": "resource",
+      "type": "team_member",
       "primary_dimension": "team",
       "meta": {
         "suspect_numeric": false,
@@ -347,14 +119,15 @@
       }
     },
     {
-      "text": "团队联合阿里巴巴、腾讯、斑马汽车、之江实验室、寒武纪、长安汽车、吉利汽车等智能汽车产研机构。",
+      "text": "该团队连续4次承担国家重大专项课题，联合阿里巴巴、腾讯、斑马汽车、之江实验室、寒武纪、长安汽车、吉利汽车等智能汽车产研机构。",
       "dimensions": [
         "team",
         "strategy"
       ],
-      "type": "collaboration",
+      "type": "team_member",
       "primary_dimension": "team",
       "meta": {
+        "suspect_numeric": false,
         "proposal_id": "tzcl",
         "chunk_index": 2,
         "char_start": 2800,
@@ -362,15 +135,14 @@
       }
     },
     {
-      "text": "渠道体系包括“与整车企业合作，建立产品应用体系”。",
+      "text": "万向集团是中国一家知名的汽车制造商，成立于1956年。",
       "dimensions": [
-        "feasibility",
-        "team",
-        "strategy"
+        "team"
       ],
-      "type": "collaboration",
+      "type": "team_member",
       "primary_dimension": "team",
       "meta": {
+        "suspect_numeric": true,
         "proposal_id": "tzcl",
         "chunk_index": 3,
         "char_start": 4200,
@@ -378,14 +150,14 @@
       }
     },
     {
-      "text": "渠道体系中提到“万向集团”。",
+      "text": "玛西尔电动车是一家法国电动车制造商，成立于1998年。",
       "dimensions": [
-        "team",
-        "strategy"
+        "team"
       ],
-      "type": "collaboration",
+      "type": "team_member",
       "primary_dimension": "team",
       "meta": {
+        "suspect_numeric": true,
         "proposal_id": "tzcl",
         "chunk_index": 3,
         "char_start": 4200,
@@ -393,14 +165,14 @@
       }
     },
     {
-      "text": "渠道体系中提到“五龙汽车”。",
+      "text": "洪都电动车是一家中国电动车制造商，成立于2013年。",
       "dimensions": [
-        "team",
-        "strategy"
+        "team"
       ],
-      "type": "collaboration",
+      "type": "team_member",
       "primary_dimension": "team",
       "meta": {
+        "suspect_numeric": true,
         "proposal_id": "tzcl",
         "chunk_index": 3,
         "char_start": 4200,
@@ -408,14 +180,14 @@
       }
     },
     {
-      "text": "渠道体系中提到“玛西尔电动车”。",
+      "text": "云乐电动车是一家中国电动车制造商，成立于2015年。",
       "dimensions": [
-        "team",
-        "strategy"
+        "team"
       ],
-      "type": "collaboration",
+      "type": "team_member",
       "primary_dimension": "team",
       "meta": {
+        "suspect_numeric": true,
         "proposal_id": "tzcl",
         "chunk_index": 3,
         "char_start": 4200,
@@ -423,57 +195,11 @@
       }
     },
     {
-      "text": "渠道体系中提到“洪都电动车”。",
+      "text": "项目团队由万向集团、玛西尔电动车、洪都电动车和菜鸟物流等公司组成。",
       "dimensions": [
-        "team",
-        "strategy"
+        "team"
       ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系中提到“菜鸟物流”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系中提到“云乐电动车”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "文本称团队与“大巴车、观光车、快递车等企业”有长期合作关系。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
+      "type": "other",
       "primary_dimension": "team",
       "meta": {
         "proposal_id": "tzcl",
@@ -485,8 +211,26 @@
   ],
   "objectives": [
     {
-      "text": "项目主题为“特种车辆自动驾驶”。",
+      "text": "中国是全球最大的特种车辆市场",
       "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
+      }
+    },
+    {
+      "text": "该项目的目标是成为世界领先的特种行业自动驾驶平台综合提供商",
+      "dimensions": [
+        "innovation",
+        "feasibility",
         "objectives"
       ],
       "type": "other",
@@ -499,28 +243,11 @@
       }
     },
     {
-      "text": "文本中提到“智能计算单元（机脑）”。",
+      "text": "该项目面向全球无人系统市场，提供软硬件核心技术",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析指出“特种车辆/移动设备发展迅速”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -532,45 +259,11 @@
       }
     },
     {
-      "text": "行业及市场分析提到“旅游观光车年销量超过5万辆”。",
+      "text": "该项目的开发和研发阶段分为三个步骤：进行自动驾驶关键技术开发、面向全球无人系统市场提供软硬件核心技术",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“自动搬运车年均增长超过50%”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“道路清扫车需求旺盛”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -582,312 +275,7 @@
       }
     },
     {
-      "text": "行业及市场分析提到“移动服务机器人增长迅速”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“自动驾驶成为特种车辆的发展趋势”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析列举了应用方向，包括“自动驾驶旅游观光车”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析列举了应用方向，包括“无人道路清扫车、自动驾驶搬运车”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“无人机、无人船应用广泛”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析指出“自动驾驶可以节约操作人员成本”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“自动驾驶技术将率先在特种车辆领域得到应用”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“实现机器换人，降低运营成本，杜绝安全隐患”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "mitigation",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“中国是全球最大的特种车辆市场”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“国内特种车辆产业链条短，整车研发能力弱”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“特种车辆自动驾驶技术专业研发企业少”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“本项目支持特种车辆企业实现高度自动驾驶”。",
-      "dimensions": [
-        "objectives",
-        "strategy"
-      ],
-      "type": "other",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“本项目为特种车辆的自动驾驶提供高性能计算平台和整体解决方案”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "mitigation",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "“发展战略”中给出的目标是“成为世界领先的特种行业自动驾驶平台综合提供商”。",
-      "dimensions": [
-        "objectives",
-        "strategy"
-      ],
-      "type": "other",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "发展战略的Step1为“进行自动驾驶关键技术开发”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "发展战略提出“针对特种车辆、特定场景的需求，拓展自动驾驶应用”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "发展战略的Step3提出“面向全球无人系统市场，提供软硬件核心技术”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "项目进行技术与产品研发，构建软件、硬件、视觉的定位、导航、识别等机器人及机械手臂自主控制技术。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "项目提出“算法一体化的车辆智能化平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "项目计划到2020年建立“可靠、安全、实时性强的智能网联汽车智能化平台”。",
+      "text": "2013年，浙江大学智能汽车研究中心发布了型无人驾驶",
       "dimensions": [
         "feasibility",
         "objectives"
@@ -903,42 +291,10 @@
       }
     },
     {
-      "text": "项目计划形成“平台相关标准”，以支撑“高度自动驾驶（HA级）”。",
+      "text": "2014年，浙江大学智能汽车研究中心发布了SmartOSEK操作系统平台",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "发展战略的目标是“成为世界领先的特种行业自动驾驶平台综合提供商”。",
-      "dimensions": [
-        "objectives",
-        "strategy"
-      ],
-      "type": "other",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "Step1为“进行自动驾驶关键技术开发”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "objectives"
       ],
       "type": "milestone",
       "primary_dimension": "objectives",
@@ -951,41 +307,7 @@
       }
     },
     {
-      "text": "Step1提出“针对特种车辆、特定场景的需求，拓展自动驾驶应用”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "Step2为“面向全球无人系统市场，提供软硬件核心技术”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "浙江大学智能汽车研究中心面向汽车智能化领域。",
+      "text": "该中心的核心团队包括杨国青、潘之杰等人",
       "dimensions": [
         "team",
         "objectives"
@@ -994,193 +316,69 @@
       "primary_dimension": "team",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
       }
     },
     {
-      "text": "浙江大学智能汽车研究中心致力于车辆控制技术、物联网技术、人工智能技术和大数据技术的研发及应用推广。",
+      "text": "潘之杰是浙江大学智能汽车研究中心总工程师",
       "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“汽车电子软件平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2014年发布“SmartOSEK操作系统平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2013年发布“实控系统仿真平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2008年发布“SmartSAR仿真测试系统”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“智能车辆共享大数据平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2005年发布“智能共享车、网约车平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“数字孪生的智能交通系统平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“无人驾驶平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "团队推进中国智能汽车关键技术突破和标准规范制订工作。",
-      "dimensions": [
-        "objectives",
-        "strategy"
+        "team",
+        "objectives"
       ],
       "type": "other",
-      "primary_dimension": "objectives",
+      "primary_dimension": "team",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
       }
     },
     {
-      "text": "核心产品为“自动驾驶智能计算单元(ICU)”。",
+      "text": "2018年，浙江大学智能汽车研究中心建立了可靠、安全、实时性强的智能网联汽车智能化平台",
       "dimensions": [
         "feasibility",
-        "objectives",
+        "objectives"
+      ],
+      "type": "milestone",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
+      }
+    },
+    {
+      "text": "该平台形成了平台相关标准，支撑高度自动驾驶（HA级）",
+      "dimensions": [
+        "feasibility",
+        "objectives"
+      ],
+      "type": "milestone",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
+      }
+    },
+    {
+      "text": "2014年发布的SmartOSEK操作系统平台是中国首个微型无人驾驶系统。",
+      "dimensions": [
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
+        "suspect_numeric": false,
         "proposal_id": "tzcl",
         "chunk_index": 2,
         "char_start": 2800,
@@ -1188,30 +386,68 @@
       }
     },
     {
-      "text": "自动驾驶智能计算单元（ICU）为自动驾驶应用提供环境感知、机器学习、智能判断、安全控制等计算能力。",
+      "text": "2008年发布的SmartSAR仿真测试系统是中国首个模拟智能车辆共享大数据平台。",
       "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "产品架构中列出“机脑ICU”，并包含GPU、MCU、DSP、FPGA。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "2013年发布的实控系统仿真平台是智能微型家电动车的开发基础。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "2018年6月20日发布的自动驾驶智能计算单元（ICU）为自动驾驶应用提供环境感知、功能机器学习、智能判断、安全控制等计算能力。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "ICU采用异构多处理器计算架构，提供图像处理、雷达数据处理、高速通信、电机控制和电源管理的能力，为特种车辆自动驾驶提供强大的计算资源。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -1221,43 +457,12 @@
       }
     },
     {
-      "text": "商业应用模式包含“自动驾驶场景训练”“自动驾驶仿真测试”“自动驾驶开发开源平台”。",
+      "text": "商业应用模式包括自动驾驶场景训练、智慧景区、智慧社区、自动驾驶仿真测试、特种营运车辆自动驾驶需求等。",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "商业应用模式中列出特种营运车辆应用，包括自动驾驶观光车、自动驾驶清扫车、自动驾驶巡逻车、自动驾驶快递车。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "文本提出“针对特种运营车辆自动驾驶需求”，采用高性能计算平台，用机器学习的方法，从智能化改造开始，逐步做进前装市场。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -1269,95 +474,81 @@
       }
     },
     {
-      "text": "产品研发时间为2018年-2020年。",
+      "text": "产品核心竞争力是18年汽车电子核心技术积累，国内最领先的核心汽车用操作系统平台和国内首个异构多处理器计算单元。",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "文本称“万向、玛西尔、洪都、菜鸟、云乐等”整车企业已提出明确需求。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "直接市场需求中，公交车为2000辆/年。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
         "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "直接市场需求中，观光车为2万辆/年。",
+      "text": "研发计划包括无人车批量应用、自动驾驶软硬件平台、国际自动驾驶技术联盟、移动机器人批量应用等。",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "渠道体系包括与整车企业合作，建立产品应用体系、万向集团、五龙汽车、玛西尔电动车、洪都电动车等。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "直接市场需求包括整车企业已提出明确需求、菜鸟物流、公交车2000辆/年、快递车20万辆/年等。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
         "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "直接市场需求中，快递车为20万辆/年。",
+      "text": "菜鸟物流的市场规模为2000辆/年。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "财务预测中，第五年预计年销售额为25000。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -1370,44 +561,11 @@
       }
     },
     {
-      "text": "初期投资主要用于“计算单元（机脑）的设计研发、场景数据积累、市场开拓及形成初步销售”。",
+      "text": "云乐电动车的市场规模为2万辆/年。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "根据实际发展情况，将于第2年或第3年进行A轮融资。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "A轮融资用途包括“将核心计算单元产品拓展至4个以上的商用无人驾驶产品系列，形成规模销售”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -1420,13 +578,81 @@
       }
     },
     {
-      "text": "企业发展规划提出“一年起步，完成产品验证”。",
+      "text": "快递车的市场规模为20万辆/年。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
-      "type": "milestone",
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目的首轮融资金额为5500万，主要用于产品研发和市场拓展。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目的A轮融资金额为3亿，主要用于产品优化和国际市场渠道。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "mitigation",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目的B轮融资金额为1亿，主要用于产品研发和规模化生产。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目风险管控程度为严重，主要面临市场风险、技术风险和工程风险。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "risk",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -1436,59 +662,12 @@
       }
     },
     {
-      "text": "企业发展规划提出“三年腾飞，完成模型和模式验证”。",
+      "text": "自动驾驶市场爆发式增长，市场缺口大，市场生产规模小。",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划提出“五年走向世界，完成产业验证”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划中提出“完成原型机脑核心设计”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "在“市场供求状况”项下，文本写到“自动驾驶市场爆发式增长，市场缺口大，市场生产规模小”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -1500,11 +679,11 @@
       }
     },
     {
-      "text": "在“市场竞争情况”项下，文本写到“本项目与车辆生产企业合作，销售渠道畅通，竞争力强”。",
+      "text": "本项目与车辆生产企业合作，销售渠道畅通，竞争力强。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -1516,12 +695,93 @@
       }
     },
     {
-      "text": "文本中出现口号式表述“人工智能，让和车辆无人化!”。",
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
       "dimensions": [
-        "objectives",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "other",
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -1533,237 +793,12 @@
   ],
   "strategy": [
     {
-      "text": "文本中提到“智能计算单元（机脑）”。",
+      "text": "该项目为特种车辆的自动驾驶提供高性能计算平台和整体解决方案",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "目录包含“行业分析、核心团队及公司组织架构、技术优势和研发计划、财务预测、企业发展规划、融资计划、风险管控”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "risk",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析指出“特种车辆/移动设备发展迅速”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“旅游观光车年销量超过5万辆”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“自动搬运车年均增长超过50%”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“道路清扫车需求旺盛”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“移动服务机器人增长迅速”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“自动驾驶成为特种车辆的发展趋势”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析列举了应用方向，包括“自动驾驶旅游观光车”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析列举了应用方向，包括“无人道路清扫车、自动驾驶搬运车”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“无人机、无人船应用广泛”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析指出“自动驾驶可以节约操作人员成本”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“自动驾驶技术将率先在特种车辆领域得到应用”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“实现机器换人，降低运营成本，杜绝安全隐患”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
         "strategy"
       ],
       "type": "mitigation",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“自动驾驶将分四个阶段实现”。",
-      "dimensions": [
-        "strategy"
-      ],
-      "type": "other",
       "primary_dimension": "strategy",
       "meta": {
         "proposal_id": "tzcl",
@@ -1773,11 +808,11 @@
       }
     },
     {
-      "text": "文本中写到“中国是全球最大的特种车辆市场”。",
+      "text": "中国是全球最大的特种车辆市场",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -1789,11 +824,26 @@
       }
     },
     {
-      "text": "文本中写到“国内特种车辆产业链条短，整车研发能力弱”。",
+      "text": "依托浙江大学智能汽车研究体系进行开发和研发",
       "dimensions": [
         "feasibility",
-        "objectives",
         "strategy"
+      ],
+      "type": "tech_route",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
+      }
+    },
+    {
+      "text": "该项目面向全球无人系统市场，提供软硬件核心技术",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -1805,11 +855,11 @@
       }
     },
     {
-      "text": "文本中写到“特种车辆自动驾驶技术专业研发企业少”。",
+      "text": "该项目的开发和研发阶段分为三个步骤：进行自动驾驶关键技术开发、面向全球无人系统市场提供软硬件核心技术",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -1821,183 +871,40 @@
       }
     },
     {
-      "text": "文本中写到“本项目支持特种车辆企业实现高度自动驾驶”。",
+      "text": "该中心致力于车辆控制技术、物联网技术、人工智能技术和大数据技术的研发及应用推广",
       "dimensions": [
-        "objectives",
-        "strategy"
-      ],
-      "type": "other",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“本项目为特种车辆的自动驾驶提供高性能计算平台和整体解决方案”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
         "strategy"
       ],
-      "type": "mitigation",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "“发展战略”中给出的目标是“成为世界领先的特种行业自动驾驶平台综合提供商”。",
-      "dimensions": [
-        "objectives",
-        "strategy"
-      ],
       "type": "other",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "发展战略提出“依托浙江大学智能汽车研究体系”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "resource",
       "primary_dimension": "strategy",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
       }
     },
     {
-      "text": "发展战略的Step1为“进行自动驾驶关键技术开发”。",
+      "text": "2018年，浙江大学智能汽车研究中心推动交通机械行业变革",
       "dimensions": [
-        "feasibility",
-        "objectives",
+        "innovation",
         "strategy"
       ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
+      "type": "other",
+      "primary_dimension": "strategy",
       "meta": {
         "suspect_numeric": false,
         "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "发展战略提出“针对特种车辆、特定场景的需求，拓展自动驾驶应用”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "发展战略的Step3提出“面向全球无人系统市场，提供软硬件核心技术”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "技术咨询委员会相关机构在文本中出现“浙江大学、清华大学、华东师范大学”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "项目进行技术与产品研发，构建软件、硬件、视觉的定位、导航、识别等机器人及机械手臂自主控制技术。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
         "chunk_index": 1,
         "char_start": 1400,
         "char_end": 3200
       }
     },
     {
-      "text": "项目提出“算法一体化的车辆智能化平台”。",
+      "text": "人工智能成为国家战略，推动交通机械行业变革",
       "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "项目计划形成“平台相关标准”，以支撑“高度自动驾驶（HA级）”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "文本提到“人工智能成为国家战略，推动交通机械行业变革”。",
-      "dimensions": [
+        "innovation",
         "strategy"
       ],
       "type": "other",
@@ -2010,88 +917,7 @@
       }
     },
     {
-      "text": "发展战略的目标是“成为世界领先的特种行业自动驾驶平台综合提供商”。",
-      "dimensions": [
-        "objectives",
-        "strategy"
-      ],
-      "type": "other",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "项目发展战略提出“依托浙江大学智能汽车研究体系”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "resource",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "Step1为“进行自动驾驶关键技术开发”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "Step1提出“针对特种车辆、特定场景的需求，拓展自动驾驶应用”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "Step2为“面向全球无人系统市场，提供软硬件核心技术”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "杨国青的职责为“项目总体规划，应用模式推广”。",
+      "text": "浙江大学智能汽车研究中心是面向汽车智能化领域，致力于车辆控制技术、物联网技、人工智能技术和大数据技术的研发及应用推广。",
       "dimensions": [
         "team",
         "strategy"
@@ -2100,13 +926,67 @@
       "primary_dimension": "team",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "潘之杰主要研究方向包括“智能电动车底盘线控技术、智能驾驶、自动驾驶、智慧城市智慧交通”。",
+      "text": "2014年发布的SmartOSEK操作系统平台是中国首个微型无人驾驶系统。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "2008年发布的SmartSAR仿真测试系统是中国首个模拟智能车辆共享大数据平台。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "2013年发布的实控系统仿真平台是智能微型家电动车的开发基础。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "2005年开始的汽车电是无人驾驶平台子核心技术研发的基础。",
       "dimensions": [
         "team",
         "strategy"
@@ -2114,38 +994,23 @@
       "type": "team_member",
       "primary_dimension": "team",
       "meta": {
+        "suspect_numeric": false,
         "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "潘之杰的职责为“技术方向把控，关键技术创新”。",
+      "text": "该团队连续4次承担国家重大专项课题，联合阿里巴巴、腾讯、斑马汽车、之江实验室、寒武纪、长安汽车、吉利汽车等智能汽车产研机构。",
       "dimensions": [
         "team",
-        "innovation",
         "strategy"
       ],
       "type": "team_member",
       "primary_dimension": "team",
       "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "浙江大学智能汽车研究中心致力于车辆控制技术、物联网技术、人工智能技术和大数据技术的研发及应用推广。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
+        "suspect_numeric": false,
         "proposal_id": "tzcl",
         "chunk_index": 2,
         "char_start": 2800,
@@ -2153,47 +1018,14 @@
       }
     },
     {
-      "text": "研究成果包括“基于模型驱动的汽车软件开发”。",
+      "text": "2018年6月20日发布的自动驾驶智能计算单元（ICU）为自动驾驶应用提供环境感知、功能机器学习、智能判断、安全控制等计算能力。",
       "dimensions": [
-        "feasibility",
         "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“汽车电子软件平台”。",
-      "dimensions": [
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2014年发布“SmartOSEK操作系统平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -2204,276 +1036,12 @@
       }
     },
     {
-      "text": "2013年发布“实控系统仿真平台”。",
+      "text": "ICU采用异构多处理器计算架构，提供图像处理、雷达数据处理、高速通信、电机控制和电源管理的能力，为特种车辆自动驾驶提供强大的计算资源。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2008年发布“SmartSAR仿真测试系统”。",
-      "dimensions": [
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“智能车辆共享大数据平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2005年发布“智能共享车、网约车平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“数字孪生的智能交通系统平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“无人驾驶平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "团队联合阿里巴巴、腾讯、斑马汽车、之江实验室、寒武纪、长安汽车、吉利汽车等智能汽车产研机构。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "团队推进中国智能汽车关键技术突破和标准规范制订工作。",
-      "dimensions": [
-        "objectives",
-        "strategy"
-      ],
-      "type": "other",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "核心产品为“自动驾驶智能计算单元(ICU)”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）为自动驾驶应用提供环境感知、机器学习、智能判断、安全控制等计算能力。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）的组成包括异构多处理器硬件、混核操作系统、中间件、机器人操作系统、算法库。",
-      "dimensions": [
-        "feasibility",
-        "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）的关键技术包括异构多处理器融合技术、多核通信技术、安全控制技术、机器学习算法框架。",
-      "dimensions": [
-        "feasibility",
-        "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "产品架构中列出“机脑ICU”，并包含GPU、MCU、DSP、FPGA。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）采用异构多处理器计算架构，提供图像处理、雷达数据处理、高速网络通信、电机控制、电源管理、信息融合、决策算法等能力。",
-      "dimensions": [
-        "feasibility",
-        "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "商业应用模式包含“自动驾驶场景训练”“自动驾驶仿真测试”“自动驾驶开发开源平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "商业应用模式中列出特种营运车辆应用，包括自动驾驶观光车、自动驾驶清扫车、自动驾驶巡逻车、自动驾驶快递车。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "文本提出“针对特种运营车辆自动驾驶需求”，采用高性能计算平台，用机器学习的方法，从智能化改造开始，逐步做进前装市场。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -2485,165 +1053,98 @@
       }
     },
     {
-      "text": "产品研发时间为2018年-2020年。",
+      "text": "商业应用模式包括自动驾驶场景训练、智慧景区、智慧社区、自动驾驶仿真测试、特种营运车辆自动驾驶需求等。",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系包括“与整车企业合作，建立产品应用体系”。",
-      "dimensions": [
-        "feasibility",
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系中提到“万向集团”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系中提到“五龙汽车”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系中提到“玛西尔电动车”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系中提到“洪都电动车”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系中提到“菜鸟物流”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系中提到“云乐电动车”。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "文本称团队与“大巴车、观光车、快递车等企业”有长期合作关系。",
-      "dimensions": [
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "文本称“万向、玛西尔、洪都、菜鸟、云乐等”整车企业已提出明确需求。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "直接市场需求中，公交车为2000辆/年。",
+      "text": "产品核心竞争力是18年汽车电子核心技术积累，国内最领先的核心汽车用操作系统平台和国内首个异构多处理器计算单元。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "研发计划包括无人车批量应用、自动驾驶软硬件平台、国际自动驾驶技术联盟、移动机器人批量应用等。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "渠道体系包括与整车企业合作，建立产品应用体系、万向集团、五龙汽车、玛西尔电动车、洪都电动车等。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "直接市场需求包括整车企业已提出明确需求、菜鸟物流、公交车2000辆/年、快递车20万辆/年等。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "菜鸟物流的市场规模为2000辆/年。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -2656,11 +1157,11 @@
       }
     },
     {
-      "text": "直接市场需求中，观光车为2万辆/年。",
+      "text": "云乐电动车的市场规模为2万辆/年。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -2673,11 +1174,11 @@
       }
     },
     {
-      "text": "直接市场需求中，快递车为20万辆/年。",
+      "text": "快递车的市场规模为20万辆/年。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -2690,11 +1191,11 @@
       }
     },
     {
-      "text": "财务预测中，第五年预计年销售额为25000。",
+      "text": "项目的首轮融资金额为5500万，主要用于产品研发和市场拓展。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -2707,129 +1208,16 @@
       }
     },
     {
-      "text": "初期投资为5500万，资金来源为“扶持资金+团队自筹”。",
+      "text": "项目的A轮融资金额为3亿，主要用于产品优化和国际市场渠道。",
       "dimensions": [
         "feasibility",
-        "strategy"
-      ],
-      "type": "funding_source",
-      "primary_dimension": "strategy",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "初期投资主要用于“计算单元（机脑）的设计研发、场景数据积累、市场开拓及形成初步销售”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "根据实际发展情况，将于第2年或第3年进行A轮融资。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "A轮融资用途包括“将核心计算单元产品拓展至4个以上的商用无人驾驶产品系列，形成规模销售”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划提出“一年起步，完成产品验证”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划提出“三年腾飞，完成模型和模式验证”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划提出“五年走向世界，完成产业验证”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划中提出“优化机脑整体设计”。",
-      "dimensions": [
-        "feasibility",
-        "innovation",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "mitigation",
-      "primary_dimension": "strategy",
+      "primary_dimension": "objectives",
       "meta": {
+        "suspect_numeric": false,
         "proposal_id": "tzcl",
         "chunk_index": 3,
         "char_start": 4200,
@@ -2837,13 +1225,30 @@
       }
     },
     {
-      "text": "企业发展规划中提出“完成原型机脑核心设计”。",
+      "text": "项目的B轮融资金额为1亿，主要用于产品研发和规模化生产。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
-      "type": "milestone",
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目风险管控程度为严重，主要面临市场风险、技术风险和工程风险。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "risk",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -2853,41 +1258,12 @@
       }
     },
     {
-      "text": "文本中列出了目录条目，包括“行业分析”“核心团队及公司组织架构”“技术优势和研发计划”“财务预测”“企业发展规划”“融资计划”“风险管控”。",
+      "text": "自动驾驶市场爆发式增长，市场缺口大，市场生产规模小。",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "strategy"
-      ],
-      "type": "risk",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本中出现“风险管控”部分，并以“风险程度”“风险因素”“应对方式”的表格形式呈现。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "risk",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "在“市场供求状况”项下，文本写到“自动驾驶市场爆发式增长，市场缺口大，市场生产规模小”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -2899,11 +1275,11 @@
       }
     },
     {
-      "text": "在“市场竞争情况”项下，文本写到“本项目与车辆生产企业合作，销售渠道畅通，竞争力强”。",
+      "text": "本项目与车辆生产企业合作，销售渠道畅通，竞争力强。",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -2915,23 +1291,9 @@
       }
     },
     {
-      "text": "文本写到“本项目启动资金主要来自与政府科技扶持资金”。",
+      "text": "项目采用的技术先进可靠，项目技术风险较小。",
       "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "funding_source",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本写到“当前我国社会稳定，项目符合国家及地方产业政策，政策风险较小”。",
-      "dimensions": [
+        "innovation",
         "feasibility",
         "strategy"
       ],
@@ -2945,12 +1307,141 @@
       }
     },
     {
-      "text": "文本中出现口号式表述“人工智能，让和车辆无人化!”。",
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
       "dimensions": [
-        "objectives",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
         "strategy"
       ],
-      "type": "other",
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -2962,126 +1453,76 @@
   ],
   "innovation": [
     {
-      "text": "文本中提到“智能计算单元（机脑）”。",
+      "text": "该项目的目标是成为世界领先的特种行业自动驾驶平台综合提供商",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“本项目为特种车辆的自动驾驶提供高性能计算平台和整体解决方案”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "mitigation",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "杨国青“主持多项国家重大专项”，并在国内首创“面向汽车控制的基础支撑软件架构”等内容。",
-      "dimensions": [
-        "team",
-        "innovation"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "潘之杰的职责为“技术方向把控，关键技术创新”。",
-      "dimensions": [
-        "team",
-        "innovation",
-        "strategy"
-      ],
-      "type": "team_member",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "研究成果包括“汽车电子V+开发理论”。",
-      "dimensions": [
-        "innovation"
+        "objectives"
       ],
       "type": "other",
-      "primary_dimension": "innovation",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“基于模型驱动的汽车软件开发”。",
-      "dimensions": [
-        "feasibility",
-        "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“汽车电子软件平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
       }
     },
     {
-      "text": "2014年发布“SmartOSEK操作系统平台”。",
+      "text": "该中心致力于车辆控制技术、物联网技术、人工智能技术和大数据技术的研发及应用推广",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
         "strategy"
       ],
-      "type": "product",
+      "type": "other",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
+      }
+    },
+    {
+      "text": "2018年，浙江大学智能汽车研究中心推动交通机械行业变革",
+      "dimensions": [
+        "innovation",
+        "strategy"
+      ],
+      "type": "other",
+      "primary_dimension": "strategy",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
+      }
+    },
+    {
+      "text": "人工智能成为国家战略，推动交通机械行业变革",
+      "dimensions": [
+        "innovation",
+        "strategy"
+      ],
+      "type": "other",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 1,
+        "char_start": 1400,
+        "char_end": 3200
+      }
+    },
+    {
+      "text": "2014年发布的SmartOSEK操作系统平台是中国首个微型无人驾驶系统。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3092,14 +1533,14 @@
       }
     },
     {
-      "text": "2013年发布“实控系统仿真平台”。",
+      "text": "2008年发布的SmartSAR仿真测试系统是中国首个模拟智能车辆共享大数据平台。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3110,14 +1551,14 @@
       }
     },
     {
-      "text": "2008年发布“SmartSAR仿真测试系统”。",
+      "text": "2013年发布的实控系统仿真平台是智能微型家电动车的开发基础。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3128,31 +1569,14 @@
       }
     },
     {
-      "text": "研究成果包括“智能车辆共享大数据平台”。",
+      "text": "2018年6月20日发布的自动驾驶智能计算单元（ICU）为自动驾驶应用提供环境感知、功能机器学习、智能判断、安全控制等计算能力。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2005年发布“智能共享车、网约车平台”。",
-      "dimensions": [
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3163,14 +1587,14 @@
       }
     },
     {
-      "text": "研究成果包括“数字孪生的智能交通系统平台”。",
+      "text": "ICU采用异构多处理器计算架构，提供图像处理、雷达数据处理、高速通信、电机控制和电源管理的能力，为特种车辆自动驾驶提供强大的计算资源。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -3180,14 +1604,14 @@
       }
     },
     {
-      "text": "研究成果包括“无人驾驶平台”。",
+      "text": "商业应用模式包括自动驾驶场景训练、智慧景区、智慧社区、自动驾驶仿真测试、特种营运车辆自动驾驶需求等。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -3197,14 +1621,32 @@
       }
     },
     {
-      "text": "核心产品为“自动驾驶智能计算单元(ICU)”。",
+      "text": "产品核心竞争力是18年汽车电子核心技术积累，国内最领先的核心汽车用操作系统平台和国内首个异构多处理器计算单元。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "研发计划包括无人车批量应用、自动驾驶软硬件平台、国际自动驾驶技术联盟、移动机器人批量应用等。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -3214,46 +1656,14 @@
       }
     },
     {
-      "text": "自动驾驶智能计算单元（ICU）的组成包括异构多处理器硬件、混核操作系统、中间件、机器人操作系统、算法库。",
+      "text": "渠道体系包括与整车企业合作，建立产品应用体系、万向集团、五龙汽车、玛西尔电动车、洪都电动车等。",
       "dimensions": [
-        "feasibility",
         "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）的关键技术包括异构多处理器融合技术、多核通信技术、安全控制技术、机器学习算法框架。",
-      "dimensions": [
         "feasibility",
-        "innovation",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "产品架构中列出“机脑ICU”，并包含GPU、MCU、DSP、FPGA。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
@@ -3263,15 +1673,17 @@
       }
     },
     {
-      "text": "自动驾驶智能计算单元（ICU）采用异构多处理器计算架构，提供图像处理、雷达数据处理、高速网络通信、电机控制、电源管理、信息融合、决策算法等能力。",
+      "text": "直接市场需求包括整车企业已提出明确需求、菜鸟物流、公交车2000辆/年、快递车20万辆/年等。",
       "dimensions": [
-        "feasibility",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
+      "type": "market",
+      "primary_dimension": "objectives",
       "meta": {
+        "suspect_numeric": false,
         "proposal_id": "tzcl",
         "chunk_index": 2,
         "char_start": 2800,
@@ -3279,29 +1691,15 @@
       }
     },
     {
-      "text": "企业发展规划中提出“优化机脑整体设计”。",
+      "text": "自动驾驶市场爆发式增长，市场缺口大，市场生产规模小。",
       "dimensions": [
-        "feasibility",
         "innovation",
-        "strategy"
-      ],
-      "type": "mitigation",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "技术风险的子项包含“先进性”。",
-      "dimensions": [
         "feasibility",
-        "innovation"
+        "strategy",
+        "objectives"
       ],
-      "type": "risk",
-      "primary_dimension": "innovation",
+      "type": "market",
+      "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
         "chunk_index": 4,
@@ -3310,13 +1708,62 @@
       }
     },
     {
-      "text": "文本写到“项目采用的技术先进可靠，项目技术风险较小”。",
+      "text": "项目采用的技术先进可靠，项目技术风险较小。",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "innovation"
+        "strategy"
       ],
       "type": "risk",
-      "primary_dimension": "innovation",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
       "meta": {
         "proposal_id": "tzcl",
         "chunk_index": 4,
@@ -3327,7 +1774,7 @@
   ],
   "feasibility": [
     {
-      "text": "该提案日期为“2018/6/20”。",
+      "text": "2018年，特种车辆自动驾驶项目开始推进。",
       "dimensions": [
         "feasibility"
       ],
@@ -3342,298 +1789,7 @@
       }
     },
     {
-      "text": "文本中提到“智能计算单元（机脑）”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "目录包含“行业分析、核心团队及公司组织架构、技术优势和研发计划、财务预测、企业发展规划、融资计划、风险管控”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "risk",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析指出“特种车辆/移动设备发展迅速”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“旅游观光车年销量超过5万辆”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“自动搬运车年均增长超过50%”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“道路清扫车需求旺盛”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“移动服务机器人增长迅速”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“自动驾驶成为特种车辆的发展趋势”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析列举了应用方向，包括“自动驾驶旅游观光车”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析列举了应用方向，包括“无人道路清扫车、自动驾驶搬运车”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提到“无人机、无人船应用广泛”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析指出“自动驾驶可以节约操作人员成本”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“自动驾驶技术将率先在特种车辆领域得到应用”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "行业及市场分析提出“实现机器换人，降低运营成本，杜绝安全隐患”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "mitigation",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“中国是全球最大的特种车辆市场”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“国内特种车辆产业链条短，整车研发能力弱”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“特种车辆自动驾驶技术专业研发企业少”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“本项目为特种车辆的自动驾驶提供高性能计算平台和整体解决方案”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "mitigation",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "文本中写到“特种车辆生产企业缺乏发展自动驾驶技术的人才和资源，不具备自动驾驶产品研发能力”。",
+      "text": "该项目支持特种车辆企业实现高度自动驾驶",
       "dimensions": [
         "feasibility"
       ],
@@ -3647,12 +1803,12 @@
       }
     },
     {
-      "text": "发展战略提出“依托浙江大学智能汽车研究体系”。",
+      "text": "该项目为特种车辆的自动驾驶提供高性能计算平台和整体解决方案",
       "dimensions": [
         "feasibility",
         "strategy"
       ],
-      "type": "resource",
+      "type": "mitigation",
       "primary_dimension": "strategy",
       "meta": {
         "proposal_id": "tzcl",
@@ -3662,49 +1818,15 @@
       }
     },
     {
-      "text": "发展战略的Step1为“进行自动驾驶关键技术开发”。",
+      "text": "中国是全球最大的特种车辆市场",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "发展战略提出“针对特种车辆、特定场景的需求，拓展自动驾驶应用”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 0,
-        "char_start": 0,
-        "char_end": 1800
-      }
-    },
-    {
-      "text": "发展战略的Step3提出“面向全球无人系统市场，提供软硬件核心技术”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
       "meta": {
-        "suspect_numeric": false,
         "proposal_id": "tzcl",
         "chunk_index": 0,
         "char_start": 0,
@@ -3712,39 +1834,98 @@
       }
     },
     {
-      "text": "项目进行技术与产品研发，构建软件、硬件、视觉的定位、导航、识别等机器人及机械手臂自主控制技术。",
+      "text": "国内特种车辆产业链条短，整车研发能力弱",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "other",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
+      }
+    },
+    {
+      "text": "特种车辆自动驾驶技术专业研发企业少",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "other",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
+      }
+    },
+    {
+      "text": "该项目的目标是成为世界领先的特种行业自动驾驶平台综合提供商",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "objectives"
+      ],
+      "type": "other",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
+      }
+    },
+    {
+      "text": "依托浙江大学智能汽车研究体系进行开发和研发",
       "dimensions": [
         "feasibility",
-        "objectives",
         "strategy"
       ],
       "type": "tech_route",
-      "primary_dimension": "objectives",
+      "primary_dimension": "strategy",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
       }
     },
     {
-      "text": "项目提出“算法一体化的车辆智能化平台”。",
+      "text": "该项目面向全球无人系统市场，提供软硬件核心技术",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
       }
     },
     {
-      "text": "项目计划到2020年建立“可靠、安全、实时性强的智能网联汽车智能化平台”。",
+      "text": "该项目的开发和研发阶段分为三个步骤：进行自动驾驶关键技术开发、面向全球无人系统市场提供软硬件核心技术",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 0,
+        "char_start": 0,
+        "char_end": 1800
+      }
+    },
+    {
+      "text": "2013年，浙江大学智能汽车研究中心发布了型无人驾驶",
       "dimensions": [
         "feasibility",
         "objectives"
@@ -3760,42 +1941,10 @@
       }
     },
     {
-      "text": "项目计划形成“平台相关标准”，以支撑“高度自动驾驶（HA级）”。",
+      "text": "2014年，浙江大学智能汽车研究中心发布了SmartOSEK操作系统平台",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "项目发展战略提出“依托浙江大学智能汽车研究体系”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "resource",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 1,
-        "char_start": 1400,
-        "char_end": 3200
-      }
-    },
-    {
-      "text": "Step1为“进行自动驾驶关键技术开发”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "objectives"
       ],
       "type": "milestone",
       "primary_dimension": "objectives",
@@ -3808,13 +1957,12 @@
       }
     },
     {
-      "text": "Step1提出“针对特种车辆、特定场景的需求，拓展自动驾驶应用”。",
+      "text": "2018年，浙江大学智能汽车研究中心建立了可靠、安全、实时性强的智能网联汽车智能化平台",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "objectives"
       ],
-      "type": "tech_route",
+      "type": "milestone",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3825,16 +1973,14 @@
       }
     },
     {
-      "text": "Step2为“面向全球无人系统市场，提供软硬件核心技术”。",
+      "text": "该平台形成了平台相关标准，支撑高度自动驾驶（HA级）",
       "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
+        "objectives"
       ],
-      "type": "market",
+      "type": "milestone",
       "primary_dimension": "objectives",
       "meta": {
-        "suspect_numeric": false,
         "proposal_id": "tzcl",
         "chunk_index": 1,
         "char_start": 1400,
@@ -3842,63 +1988,14 @@
       }
     },
     {
-      "text": "浙江大学智能汽车研究中心致力于车辆控制技术、物联网技术、人工智能技术和大数据技术的研发及应用推广。",
+      "text": "2014年发布的SmartOSEK操作系统平台是中国首个微型无人驾驶系统。",
       "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“基于模型驱动的汽车软件开发”。",
-      "dimensions": [
-        "feasibility",
         "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“汽车电子软件平台”。",
-      "dimensions": [
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2014年发布“SmartOSEK操作系统平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3909,14 +2006,14 @@
       }
     },
     {
-      "text": "2013年发布“实控系统仿真平台”。",
+      "text": "2008年发布的SmartSAR仿真测试系统是中国首个模拟智能车辆共享大数据平台。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3927,14 +2024,14 @@
       }
     },
     {
-      "text": "2008年发布“SmartSAR仿真测试系统”。",
+      "text": "2013年发布的实控系统仿真平台是智能微型家电动车的开发基础。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3945,31 +2042,14 @@
       }
     },
     {
-      "text": "研究成果包括“智能车辆共享大数据平台”。",
+      "text": "2018年6月20日发布的自动驾驶智能计算单元（ICU）为自动驾驶应用提供环境感知、功能机器学习、智能判断、安全控制等计算能力。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "2005年发布“智能共享车、网约车平台”。",
-      "dimensions": [
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
-      "type": "product",
+      "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
@@ -3980,191 +2060,12 @@
       }
     },
     {
-      "text": "研究成果包括“数字孪生的智能交通系统平台”。",
+      "text": "ICU采用异构多处理器计算架构，提供图像处理、雷达数据处理、高速通信、电机控制和电源管理的能力，为特种车辆自动驾驶提供强大的计算资源。",
       "dimensions": [
-        "feasibility",
-        "objectives",
         "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "研究成果包括“无人驾驶平台”。",
-      "dimensions": [
         "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "团队连续4次承担国家重大专项课题。",
-      "dimensions": [
-        "feasibility",
-        "team"
-      ],
-      "type": "resource",
-      "primary_dimension": "team",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "核心产品为“自动驾驶智能计算单元(ICU)”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）为自动驾驶应用提供环境感知、机器学习、智能判断、安全控制等计算能力。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）的组成包括异构多处理器硬件、混核操作系统、中间件、机器人操作系统、算法库。",
-      "dimensions": [
-        "feasibility",
-        "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）的关键技术包括异构多处理器融合技术、多核通信技术、安全控制技术、机器学习算法框架。",
-      "dimensions": [
-        "feasibility",
-        "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "产品架构中列出“机脑ICU”，并包含GPU、MCU、DSP、FPGA。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "innovation",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "自动驾驶智能计算单元（ICU）采用异构多处理器计算架构，提供图像处理、雷达数据处理、高速网络通信、电机控制、电源管理、信息融合、决策算法等能力。",
-      "dimensions": [
-        "feasibility",
-        "innovation",
-        "strategy"
-      ],
-      "type": "tech_route",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "商业应用模式包含“自动驾驶场景训练”“自动驾驶仿真测试”“自动驾驶开发开源平台”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "商业应用模式中列出特种营运车辆应用，包括自动驾驶观光车、自动驾驶清扫车、自动驾驶巡逻车、自动驾驶快递车。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "product",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 2,
-        "char_start": 2800,
-        "char_end": 4600
-      }
-    },
-    {
-      "text": "文本提出“针对特种运营车辆自动驾驶需求”，采用高性能计算平台，用机器学习的方法，从智能化改造开始，逐步做进前装市场。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
@@ -4176,615 +2077,580 @@
       }
     },
     {
-      "text": "产品研发时间为2018年-2020年。",
+      "text": "商业应用模式包括自动驾驶场景训练、智慧景区、智慧社区、自动驾驶仿真测试、特种营运车辆自动驾驶需求等。",
       "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "渠道体系包括“与整车企业合作，建立产品应用体系”。",
-      "dimensions": [
-        "feasibility",
-        "team",
-        "strategy"
-      ],
-      "type": "collaboration",
-      "primary_dimension": "team",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "文本称“万向、玛西尔、洪都、菜鸟、云乐等”整车企业已提出明确需求。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "直接市场需求中，公交车为2000辆/年。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "直接市场需求中，观光车为2万辆/年。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "直接市场需求中，快递车为20万辆/年。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "财务预测中，第一年预计年总成本为2000。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "budget_item",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "财务预测中，第五年预计年销售额为25000。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "初期投资为5500万，资金来源为“扶持资金+团队自筹”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "funding_source",
-      "primary_dimension": "strategy",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "初期投资主要用于“计算单元（机脑）的设计研发、场景数据积累、市场开拓及形成初步销售”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "根据实际发展情况，将于第2年或第3年进行A轮融资。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "A轮融资用途包括“将核心计算单元产品拓展至4个以上的商用无人驾驶产品系列，形成规模销售”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "market",
-      "primary_dimension": "objectives",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划提出“一年起步，完成产品验证”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划提出“三年腾飞，完成模型和模式验证”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划提出“五年走向世界，完成产业验证”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划中提出“优化机脑整体设计”。",
-      "dimensions": [
-        "feasibility",
         "innovation",
-        "strategy"
-      ],
-      "type": "mitigation",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "企业发展规划中提出“完成原型机脑核心设计”。",
-      "dimensions": [
         "feasibility",
-        "objectives",
-        "strategy"
-      ],
-      "type": "milestone",
-      "primary_dimension": "objectives",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "风险管控部分写到“自动驾驶市场爆发式增长，市场缺口大，市场生产规模小”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 3,
-        "char_start": 4200,
-        "char_end": 6000
-      }
-    },
-    {
-      "text": "文本中列出了目录条目，包括“行业分析”“核心团队及公司组织架构”“技术优势和研发计划”“财务预测”“企业发展规划”“融资计划”“风险管控”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "risk",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本中出现“风险管控”部分，并以“风险程度”“风险因素”“应对方式”的表格形式呈现。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "risk",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "风险因素序号1为“市场风险”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "在“市场供求状况”项下，文本写到“自动驾驶市场爆发式增长，市场缺口大，市场生产规模小”。",
-      "dimensions": [
-        "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "在“市场竞争情况”项下，文本写到“本项目与车辆生产企业合作，销售渠道畅通，竞争力强”。",
+      "text": "产品核心竞争力是18年汽车电子核心技术积累，国内最领先的核心汽车用操作系统平台和国内首个异构多处理器计算单元。",
       "dimensions": [
+        "innovation",
         "feasibility",
-        "objectives",
-        "strategy"
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
+      }
+    },
+    {
+      "text": "研发计划包括无人车批量应用、自动驾驶软硬件平台、国际自动驾驶技术联盟、移动机器人批量应用等。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
       "type": "market",
       "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "风险因素中包含“原材料价格”。",
+      "text": "渠道体系包括与整车企业合作，建立产品应用体系、万向集团、五龙汽车、玛西尔电动车、洪都电动车等。",
       "dimensions": [
-        "feasibility"
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
+      "type": "market",
+      "primary_dimension": "objectives",
       "meta": {
         "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "风险因素序号2为“技术风险”。",
+      "text": "直接市场需求包括整车企业已提出明确需求、菜鸟物流、公交车2000辆/年、快递车20万辆/年等。",
       "dimensions": [
-        "feasibility"
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
       ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
+      "type": "market",
+      "primary_dimension": "objectives",
       "meta": {
         "suspect_numeric": false,
         "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
+        "chunk_index": 2,
+        "char_start": 2800,
+        "char_end": 4600
       }
     },
     {
-      "text": "技术风险的子项包含“先进性”。",
-      "dimensions": [
-        "feasibility",
-        "innovation"
-      ],
-      "type": "risk",
-      "primary_dimension": "innovation",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "技术风险的子项包含“可靠性”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本写到“项目采用的技术先进可靠，项目技术风险较小”。",
-      "dimensions": [
-        "feasibility",
-        "innovation"
-      ],
-      "type": "risk",
-      "primary_dimension": "innovation",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "技术风险的子项包含“适用性”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "技术风险的子项包含“可得性”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "风险因素序号3为“工程风险”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "工程风险的子项包含“工程地质”“水文地质”“工程管理”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本写到“项目预测发生较大变化而导致工程量及投资增加的风险较小”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本写到“实施中管理不善容易造成延期及投资增加的风险”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "风险因素序号4为“资金风险”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "资金风险的子项包含“资金可靠性”“资金充足性”“汇率”“利率”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本写到“本项目启动资金主要来自与政府科技扶持资金”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "funding_source",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "风险因素序号5为“政策风险”。",
-      "dimensions": [
-        "feasibility"
-      ],
-      "type": "risk",
-      "primary_dimension": "feasibility",
-      "meta": {
-        "suspect_numeric": false,
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本写到“当前我国社会稳定，项目符合国家及地方产业政策，政策风险较小”。",
-      "dimensions": [
-        "feasibility",
-        "strategy"
-      ],
-      "type": "risk",
-      "primary_dimension": "strategy",
-      "meta": {
-        "proposal_id": "tzcl",
-        "chunk_index": 4,
-        "char_start": 5600,
-        "char_end": 6140
-      }
-    },
-    {
-      "text": "文本中出现日期“2018/6/20”。",
+      "text": "菜鸟物流是一家中国物流公司，成立于2008年。",
       "dimensions": [
         "feasibility"
       ],
       "type": "other",
       "primary_dimension": "feasibility",
       "meta": {
+        "suspect_numeric": true,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "菜鸟物流的市场规模为2000辆/年。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
         "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "云乐电动车的市场规模为2万辆/年。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "快递车的市场规模为20万辆/年。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目的首轮融资金额为5500万，主要用于产品研发和市场拓展。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目的A轮融资金额为3亿，主要用于产品优化和国际市场渠道。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "mitigation",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目的B轮融资金额为1亿，主要用于产品研发和规模化生产。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "suspect_numeric": false,
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "项目风险管控程度为严重，主要面临市场风险、技术风险和工程风险。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "risk",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 3,
+        "char_start": 4200,
+        "char_end": 6000
+      }
+    },
+    {
+      "text": "本项目启动资金主要来自与政府科技扶持资金。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场爆发式增长，市场缺口大，市场生产规模小。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "本项目与车辆生产企业合作，销售渠道畅通，竞争力强。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目采用的技术先进可靠，项目技术风险较小。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目预测发生较大变化而导致工程量及投资增加的风险较小。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "risk",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "本项目启动资金主要来自与政府科技扶持资金，项目符合国家及地方产业政策。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "本项目启动资金主要来自与政府科技扶持资金，项目资金充足性较高。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目资金可靠性较高，本项目启动资金主要来自与政府科技扶持资金。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "本项目启动资金主要来自与政府科技扶持资金，项目资金充足性较高。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "本项目启动资金主要来自与政府科技扶持资金，项目资金充足性较高。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目资金可靠性较高，本项目启动资金主要来自与政府科技扶持资金。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "本项目启动资金主要来自与政府科技扶持资金，项目资金充足性较高。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场竞争力强。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目技术风险较小，项目采用的技术先进可靠。",
+      "dimensions": [
+        "innovation",
+        "feasibility",
+        "strategy"
+      ],
+      "type": "risk",
+      "primary_dimension": "strategy",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "本项目启动资金主要来自与政府科技扶持资金，项目资金充足性较高。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "自动驾驶市场需求大。本项目与车辆生产企业合作，销售渠道畅通。",
+      "dimensions": [
+        "feasibility",
+        "strategy",
+        "objectives"
+      ],
+      "type": "market",
+      "primary_dimension": "objectives",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "项目资金可靠性较高，本项目启动资金主要来自与政府科技扶持资金。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
+        "proposal_id": "tzcl",
+        "chunk_index": 4,
+        "char_start": 5600,
+        "char_end": 6140
+      }
+    },
+    {
+      "text": "本项目启动资金主要来自与政府科技扶持资金，项目资金充足性较高。",
+      "dimensions": [
+        "feasibility"
+      ],
+      "type": "budget_item",
+      "primary_dimension": "feasibility",
+      "meta": {
         "proposal_id": "tzcl",
         "chunk_index": 4,
         "char_start": 5600,

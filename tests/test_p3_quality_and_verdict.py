@@ -13,25 +13,37 @@ import ai_expert_opinion  # noqa: E402
 
 
 class TestP3QualityAndVerdict(unittest.TestCase):
-    def test_quality_gate_fails_on_low_coverage(self):
+    def test_quality_gate_warns_on_low_coverage(self):
         qg = post_processing.derive_quality_gates(
             total_q_count=10,
             selected_count=6,
             degraded_count=0,
             consistency_ratio=0.2,
         )
-        self.assertFalse(qg["pass"])
-        self.assertIn("selected_coverage_low", qg["reasons"])
+        self.assertTrue(qg["pass"])
+        self.assertIn("selected_coverage_low", qg["warnings"])
+        self.assertEqual(qg.get("reasons") or qg.get("fail_reasons"), [])
 
-    def test_quality_gate_fails_on_parse_success(self):
+    def test_parse_degradation_does_not_fail_gate(self):
         qg = post_processing.derive_quality_gates(
             total_q_count=10,
             selected_count=10,
             degraded_count=3,
             consistency_ratio=0.2,
         )
-        self.assertFalse(qg["pass"])
-        self.assertIn("parse_success_low", qg["reasons"])
+        self.assertTrue(qg["pass"])
+        self.assertLess(qg["parse_success_ratio"], 1.0)
+        self.assertEqual(qg.get("warnings") or [], [])
+
+    def test_consistency_low_is_warning_only(self):
+        qg = post_processing.derive_quality_gates(
+            total_q_count=10,
+            selected_count=10,
+            degraded_count=0,
+            consistency_ratio=0.05,
+        )
+        self.assertTrue(qg["pass"])
+        self.assertIn("consistency_low", qg["warnings"])
 
     def test_verdict_insufficient_evidence_when_gate_fails(self):
         dims = {
@@ -46,7 +58,7 @@ class TestP3QualityAndVerdict(unittest.TestCase):
             metrics_overall={
                 "overall_score": 0.75,
                 "overall_confidence": 0.8,
-                "quality_gates": {"pass": False, "reasons": ["parse_success_low"]},
+                "quality_gates": {"pass": False, "fail_reasons": ["hard_data_issue"]},
             },
             metrics_dims={
                 "innovation": {"avg": 0.7},

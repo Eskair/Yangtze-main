@@ -1,7 +1,7 @@
 {
   "proposal_id": "tzcl",
-  "generated_at": "2026-04-25T21:27:45Z",
-  "model": "gpt-5.2",
+  "generated_at": "2026-04-29T18:41:45Z",
+  "model": "gpt-4o-mini",
   "provider": "openai",
   "dimensions": {
     "team": {
@@ -9,15 +9,14 @@
       "questions": [
         {
           "aspect": "leadership_experience",
-          "question_zh": "基于提案对杨国青（首席执行官）的描述（国家重大专项主持经历、2014年国家技术发明二等奖、负责“项目总体规划/应用模式推广”），请分析其过往成果与本项目从研发到规模化应用推广的关键能力是否匹配；如果提案未说明其近3–5年主导项目的落地规模/产业化结果，请先指出信息缺失并讨论其影响。",
-          "question_en": "Based on the proposal’s description of Yang Guoqing (CEO)—leading national major projects, the 2014 National Technological Invention Award (Second Prize), and responsibility for overall planning and application model promotion—analyze whether his track record matches the capabilities needed to take this project from R&D to scaled deployment. If the proposal does not detail his major deployments/industrialization outcomes in the past 3–5 years, first state this information gap and discuss its impact.",
+          "question_zh": "请分析杨国青团队在智能汽车领域的领导经验与往期重大项目执行记。",
           "answer_type": "analysis",
           "priority": 1,
           "links_to": {
             "key_points": [
+              0,
               1,
-              2,
-              3
+              5
             ],
             "risks": [],
             "mitigations": []
@@ -26,16 +25,14 @@
           "dimension": "team"
         },
         {
-          "aspect": "leadership_experience",
-          "question_zh": "基于提案对潘之杰（总工程师）的描述（研究方向覆盖线控底盘、智能驾驶/自动驾驶、智慧交通，且负责“技术方向把控/关键技术创新”），请评价其是否具备带队完成关键技术攻关并形成可工程化产品的能力；如果提案未说明其带队交付的代表性工程系统/量产项目，请先指出信息缺失再评估。",
-          "question_en": "Based on the proposal’s description of Pan Zhijie (Chief Engineer)—research spanning drive-by-wire chassis, intelligent driving/autonomous driving, and smart transportation, and responsibility for technical direction and key innovation—assess whether he can lead critical technical breakthroughs and deliver an engineering-ready product. If the proposal does not specify representative engineering systems or mass-production projects delivered under his leadership, first note the information gap and then evaluate.",
-          "answer_type": "analysis",
+          "aspect": "domain_expertise",
+          "question_zh": "请评价该团队在智能汽车领域的专业深度及其对项目实施的支持程度。",
+          "answer_type": "rating",
           "priority": 1,
           "links_to": {
             "key_points": [
-              4,
-              5,
-              6
+              1,
+              3
             ],
             "risks": [],
             "mitigations": []
@@ -44,93 +41,18 @@
           "dimension": "team"
         },
         {
-          "aspect": "domain_expertise",
-          "question_zh": "在1–5分尺度上评价该团队在“汽车智能化/智能驾驶/线控底盘/智慧交通”等方向的技术深度与覆盖完整性，并用提案中的团队依托与研究方向信息给出简要依据。",
-          "question_en": "On a 1–5 scale, rate the team’s technical depth and coverage across automotive intelligence, intelligent/autonomous driving, drive-by-wire chassis, and smart transportation, and briefly justify using the proposal’s stated affiliations and research directions.",
-          "answer_type": "rating",
+          "aspect": "collaboration_network",
+          "question_zh": "请分析该项目团队与万向集团、玛西尔电动车等公司的合作网络的稳。",
+          "answer_type": "analysis",
           "priority": 2,
           "links_to": {
             "key_points": [
-              5,
-              7
+              3
             ],
             "risks": [],
             "mitigations": []
           },
           "qid": "team_q03",
-          "dimension": "team"
-        },
-        {
-          "aspect": "collaboration_network",
-          "question_zh": "提案列出与多所高校、智能汽车产研机构及整车企业的合作与渠道体系。请分析这些合作在本项目中的“具体分工/资源投入/交付物”是否清晰（例如数据、场景、测试车辆、工程化支持、销售渠道等）；如果提案未明确各合作方的承诺与边界，请先指出信息缺失并评估对进度与可控性的影响。",
-          "question_en": "The proposal lists collaborations with multiple universities, automotive R&D institutions, and OEMs, plus a channel system. Analyze whether the division of labor, resource commitments, and deliverables (e.g., data, scenarios, test vehicles, engineering support, sales channels) are clearly defined. If the proposal does not specify partner commitments and boundaries, first state this gap and assess its impact on schedule and controllability.",
-          "answer_type": "analysis",
-          "priority": 1,
-          "links_to": {
-            "key_points": [
-              8,
-              9
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "team_q04",
-          "dimension": "team"
-        },
-        {
-          "aspect": "governance_and_decision_making",
-          "question_zh": "在1–5分尺度上评价“技术咨询委员会（含多位院士/教授）+核心管理层（首席执行官/总工程师）”的治理与决策机制成熟度：是否能形成可执行的技术路线决策、质量把关与里程碑验收闭环？如提案未说明会议机制、决策权责与争议解决流程，请先指出缺口再评分。",
-          "question_en": "On a 1–5 scale, rate the maturity of the governance and decision-making setup (Technical Advisory Committee with academicians/professors + core management of CEO/Chief Engineer): can it produce executable technical roadmap decisions, quality gates, and milestone acceptance loops? If the proposal does not describe meeting cadence, decision rights/responsibilities, or dispute resolution, first note the gap and then rate.",
-          "answer_type": "rating",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              0,
-              1,
-              4
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "team_q05",
-          "dimension": "team"
-        },
-        {
-          "aspect": "team_capacity_and_bandwidth",
-          "question_zh": "提案对该维度的风险与应对措施描述较少。请围绕“团队稳定性与时间投入/并行项目负荷/关键岗位备份”识别最可能的团队执行风险，并说明需要补充哪些证据来降低不确定性；如果提案未提供相关信息，请先指出信息缺失再给出风险判断。",
-          "question_en": "The proposal provides limited risk and mitigation details for this dimension. Identify the most likely execution risks related to team stability and time commitment, parallel project load, and backups for key roles, and specify what evidence should be added to reduce uncertainty. If the proposal lacks such information, first state the information gap and then provide your risk judgment.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [],
-            "risks": [
-              0
-            ],
-            "mitigations": [
-              0
-            ]
-          },
-          "qid": "team_q06",
-          "dimension": "team"
-        },
-        {
-          "aspect": "implementation_compliance_experience",
-          "question_zh": "该项目面向整车企业与多类车辆应用场景。请评估团队在工程验证、质量体系与合规落地方面的经验是否足以支撑长期规模化交付；如果提案未说明测试验证体系、质量流程或合规责任人安排，请先指出信息缺失并讨论其对商业化落地的影响。",
-          "question_en": "Given the project targets OEMs and multiple vehicle application scenarios, assess whether the team’s experience in engineering validation, quality systems, and compliance deployment is sufficient for long-term scaled delivery. If the proposal does not describe test/validation systems, quality processes, or compliance ownership, first state the information gap and discuss its impact on commercialization readiness.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              9
-            ],
-            "risks": [
-              0
-            ],
-            "mitigations": [
-              0
-            ]
-          },
-          "qid": "team_q07",
           "dimension": "team"
         }
       ]
@@ -139,17 +61,14 @@
       "dimension": "objectives",
       "questions": [
         {
-          "aspect": "overall_goal_clarity",
-          "question_zh": "该项目提出“成为世界领先的特种行业自动驾驶平台综合提供商”，同时又聚焦“自动驾驶智能计算单元（ICU/机脑）及算法一体化平台”并计划建立“平台相关标准”。请分析这些表述之间的目标层级关系（愿景/战略目标/产品目标/标准目标）是否清晰一致，是否存在目标过宽或定义不清导致执行偏离的风险；如果提案未对各层级目标的边界与验收口径进行说明，请先指出信息缺失，再讨论其对评估的影响。",
-          "question_en": "The proposal states an ambition to “become a world-leading integrated provider of autonomous-driving platforms for special-purpose industries,” while also focusing on an “autonomous-driving intelligent computing unit (ICU/‘brain’) and an algorithm-integrated vehicle intelligence platform,” and planning to establish “platform-related standards.” Please analyze whether the hierarchy among vision/strategic objectives/product objectives/standards objectives is clear and consistent, and whether overly broad or ill-defined objectives could cause execution drift. If the proposal does not specify boundaries and acceptance criteria for each objective level, please first state this information gap and then discuss its impact on the assessment.",
+          "aspect": "unmet_need_alignment",
+          "question_zh": "该项目的目标是否与全球无人系统市场的需求紧密匹配？请分析项目。",
           "answer_type": "analysis",
           "priority": 1,
           "links_to": {
             "key_points": [
-              1,
-              4,
-              5,
-              6
+              0,
+              3
             ],
             "risks": [],
             "mitigations": []
@@ -158,125 +77,32 @@
           "dimension": "objectives"
         },
         {
-          "aspect": "unmet_need_alignment",
-          "question_zh": "提案在行业及市场分析中强调“实现机器换人，降低运营成本，杜绝安全隐患”，并给出特种营运车辆方向（观光车、清扫车、巡逻车、快递车）。请评估项目目标与这些未满足需求/业务痛点的匹配度与紧迫性：哪些场景的痛点最强、最适合优先落地，为什么？如果提案未给出目标客户/运营方画像或痛点量化证据（如事故率、人工成本结构等），请先指出信息缺失，再分析其对目标合理性判断的影响。",
-          "question_en": "The proposal highlights “replacing humans with machines, reducing operating costs, and eliminating safety hazards,” and lists special-purpose operational vehicle directions (sightseeing, cleaning, patrol, delivery). Please assess how well the project objectives align with these unmet needs/business pain points and their urgency: which scenarios have the strongest pain points and should be prioritized for early deployment, and why? If the proposal does not provide target customer/operator profiles or quantified evidence of pain points (e.g., incident rates, labor cost structure), please first state this information gap and then analyze its impact on judging objective soundness.",
+          "aspect": "milestones_and_timeline",
+          "question_zh": "项目的里程碑设计是否合理可执行？请分析各阶段目标的可行性及其。",
           "answer_type": "analysis",
           "priority": 1,
           "links_to": {
-            "key_points": [],
+            "key_points": [
+              1,
+              2
+            ],
             "risks": [],
-            "mitigations": [
-              0
-            ]
+            "mitigations": []
           },
           "qid": "objectives_q02",
           "dimension": "objectives"
         },
         {
-          "aspect": "milestones_and_timeline",
-          "question_zh": "提案给出“一年起步（产品验证）/三年腾飞（模型和模式验证）/五年走向世界（产业验证）”的阶段目标，并提到产品研发时间为2018-2020年及第2或第3年A轮融资安排。请分析这些里程碑与时间轴是否自洽、可执行：每一阶段最关键的可交付物与验收标准应是什么（例如原型机脑核心设计、平台能力、验证范围等）？如果提案未明确各阶段的量化验收指标与依赖条件，请先指出信息缺失，再讨论其对可行性评估的影响。",
-          "question_en": "The proposal defines phased goals of “Year 1 (product validation) / Year 3 (model and business-model validation) / Year 5 (industrial validation),” and mentions a 2018–2020 R&D window plus an A-round financing plan in Year 2 or 3. Please analyze whether these milestones and timelines are coherent and executable: what should be the key deliverables and acceptance criteria for each phase (e.g., core ‘brain’ prototype design, platform capabilities, validation scope)? If the proposal does not specify quantitative acceptance metrics and key dependencies for each phase, please first state this information gap and then discuss its impact on feasibility assessment.",
-          "answer_type": "analysis",
-          "priority": 1,
+          "aspect": "outcome_and_success_metrics",
+          "question_zh": "项目是否设定了清晰可量化的成功指标？请评价这些指标在项目评估。",
+          "answer_type": "rating",
+          "priority": 2,
           "links_to": {
-            "key_points": [
-              7,
-              8,
-              9
-            ],
+            "key_points": [],
             "risks": [],
             "mitigations": []
           },
           "qid": "objectives_q03",
-          "dimension": "objectives"
-        },
-        {
-          "aspect": "outcome_and_success_metrics",
-          "question_zh": "请在1-5分尺度上评价该项目“目标可量化程度/成功指标清晰度”。评分时请基于提案中已出现的目标表述（如“可靠、安全、实时性强”“支撑HA级”“完成产品验证/产业验证”等）判断其是否可被客观测量与验收；如果提案未给出具体指标（如可靠性/安全/实时性指标口径、HA级能力边界、验证覆盖范围），请先指出信息缺失，再说明该缺口如何影响评分。",
-          "question_en": "On a 1–5 scale, rate the measurability and clarity of success metrics for this project. Base your rating on the stated objectives (e.g., “reliable, safe, real-time,” “support HA-level autonomy,” “complete product/industrial validation”) and whether they can be objectively measured and accepted. If the proposal does not provide concrete metrics (e.g., definitions for reliability/safety/real-time, HA-level capability boundaries, validation coverage), please first state this information gap and then explain how it affects your rating.",
-          "answer_type": "rating",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              3,
-              4,
-              7
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "objectives_q04",
-          "dimension": "objectives"
-        },
-        {
-          "aspect": "scope_and_prioritization",
-          "question_zh": "提案同时提到“ICU/机脑硬件架构（GPU、MCU、DSP、FPGA）”“算法一体化平台”，以及多类研究成果/平台（汽车电子软件平台、智能车辆共享大数据平台、数字孪生的智能交通系统平台、无人驾驶平台），并包含多种商业应用模式（场景训练、仿真测试、开发开源平台）。请分析目标范围是否过大、是否存在多管线并行导致资源分散的风险；并请给出你认为应优先聚焦的1-2条主线目标及其取舍理由。如果提案未给出资源投入与优先级排序依据，请先指出信息缺失，再讨论其影响。",
-          "question_en": "The proposal mentions ICU/‘brain’ hardware architecture (GPU, MCU, DSP, FPGA), an algorithm-integrated platform, multiple research outputs/platforms (automotive electronic software platform, shared big-data platform for intelligent vehicles, digital-twin intelligent transportation system platform, autonomous-driving platform), and several commercialization modes (scenario training, simulation testing, open development platform). Please analyze whether the objective scope is too broad and whether parallel tracks could dilute resources. Also propose 1–2 primary objective tracks you believe should be prioritized and explain the trade-offs. If the proposal does not provide resource allocation and prioritization rationale, please first state this information gap and then discuss its impact.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              5,
-              6
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "objectives_q05",
-          "dimension": "objectives"
-        },
-        {
-          "aspect": "realism_and_ambition_balance",
-          "question_zh": "请在1-5分尺度上评价该项目目标在“雄心 vs 可实现性”之间的平衡程度。评分时请结合“世界领先”“五年走向世界/完成产业验证”“建立平台相关标准并支撑HA级”等目标，判断其与当前给出的阶段安排（产品验证→模型/模式验证→产业验证）是否匹配；如果提案未说明实现“世界领先/走向世界/标准制定”的具体判据与路径，请先指出信息缺失，再说明其对评分的影响。",
-          "question_en": "On a 1–5 scale, rate the balance between ambition and achievability of the project objectives. Consider goals such as “world-leading,” “go global in five years / complete industrial validation,” and “establish platform-related standards to support HA-level autonomy,” and judge whether they match the proposed phased plan (product validation → model/business-model validation → industrial validation). If the proposal does not specify concrete criteria and pathways for “world-leading/globalization/standardization,” please first state this information gap and then explain how it affects your rating.",
-          "answer_type": "rating",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              1,
-              4,
-              7
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "objectives_q06",
-          "dimension": "objectives"
-        },
-        {
-          "aspect": "overall_goal_clarity",
-          "question_zh": "该维度的风险部分仅写到“风险信息较少/未详细说明”。请判断：在“目标设定与验收”层面，提案是否存在关键风险未被识别（例如目标不可验收、里程碑定义模糊、标准制定目标不可控等）？如果提案未提供相应风险清单，请先指出这一信息缺失，并给出你认为最需要补充的3类目标风险及其可能后果。",
-          "question_en": "The risk section for this dimension only states that “risk information is limited/not detailed.” Please judge whether key risks at the level of objective setting and acceptance are missing (e.g., non-verifiable objectives, vague milestone definitions, uncontrollable standardization goals). If the proposal does not provide a risk list, please first state this information gap and then provide three categories of objective-related risks that should be added and their potential consequences.",
-          "answer_type": "analysis",
-          "priority": 1,
-          "links_to": {
-            "key_points": [],
-            "risks": [
-              0
-            ],
-            "mitigations": []
-          },
-          "qid": "objectives_q07",
-          "dimension": "objectives"
-        },
-        {
-          "aspect": "unmet_need_alignment",
-          "question_zh": "提案将应对价值表述为“降低运营成本，杜绝安全隐患”，并称“为特种车辆的自动驾驶提供高性能计算平台和整体解决方案”。请评估这些应对措施/价值主张是否足以支撑项目目标的可实现性与可验收性：它们是否被转化为可验证的目标指标与场景边界？如果提案未说明如何从“整体解决方案”落到可验收的目标与指标，请先指出信息缺失，再讨论其对目标可信度的影响。",
-          "question_en": "The proposal frames value as “reducing operating costs and eliminating safety hazards,” and states it will “provide a high-performance computing platform and an overall solution for autonomous driving of special-purpose vehicles.” Please assess whether these mitigations/value propositions are sufficient to support objective achievability and verifiability: are they translated into testable target metrics and scenario boundaries? If the proposal does not explain how the “overall solution” maps to verifiable objectives and metrics, please first state this information gap and then discuss its impact on objective credibility.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              0
-            ],
-            "risks": [],
-            "mitigations": [
-              0,
-              1
-            ]
-          },
-          "qid": "objectives_q08",
           "dimension": "objectives"
         }
       ]
@@ -285,15 +111,14 @@
       "dimension": "strategy",
       "questions": [
         {
-          "aspect": "technical_strategy",
-          "question_zh": "请评估该项目以“高性能计算平台+机器学习”切入、从“智能化改造”逐步进入“前装市场”的技术路线合理性：关键技术依赖（如异构多处理器融合、多核通信、安全控制、机器学习算法框架）是否与特种车辆场景需求匹配？如提案未说明替代技术路线或关键取舍，请先指出信息缺失，再分析其对可行性评估的影响。",
-          "question_en": "Assess the technical strategy of entering with a “high-performance computing platform + machine learning” approach and moving from “vehicle intelligence retrofit” toward the “OEM (front-installation) market.” Do the key dependencies (e.g., heterogeneous multi-processor fusion, multi-core communication, safety control, ML framework) match special-vehicle scenario needs? If the proposal does not describe alternatives or key trade-offs, please first state this information gap and then discuss its impact on feasibility assessment.",
+          "aspect": "commercialization_and_market_entry",
+          "question_zh": "请分析该项目在全球无人系统市场中的定位及其市场进入路径的有效。",
           "answer_type": "analysis",
           "priority": 1,
           "links_to": {
             "key_points": [
-              2,
-              4
+              0,
+              5
             ],
             "risks": [],
             "mitigations": []
@@ -302,11 +127,10 @@
           "dimension": "strategy"
         },
         {
-          "aspect": "implementation_development_path",
-          "question_zh": "提案提到“自动驾驶将分四个阶段实现”，并强调从改造到前装的路径。请判断该分阶段路线是否具备可执行的里程碑与验收标准（例如每阶段的功能边界、测试/验证方式、进入下一阶段的门槛）。如果提案未给出明确里程碑/指标，请先指出缺失，再说明这会如何影响对落地节奏与资源配置的评估。",
-          "question_en": "The proposal states that “autonomous driving will be achieved in four stages” and emphasizes a path from retrofit to OEM. Evaluate whether this staged plan has executable milestones and acceptance criteria (e.g., functional scope per stage, test/validation approach, gates to move to the next stage). If milestones/metrics are not specified, please first state the gap and explain how it affects assessment of execution pace and resourcing.",
+          "aspect": "technical_strategy",
+          "question_zh": "请评估该项目的技术路线设计，包括其在车辆控制、物联网和人工智。",
           "answer_type": "analysis",
-          "priority": 1,
+          "priority": 2,
           "links_to": {
             "key_points": [
               1,
@@ -319,105 +143,18 @@
           "dimension": "strategy"
         },
         {
-          "aspect": "commercialization_and_market_entry",
-          "question_zh": "该项目以特种营运车辆与无人系统应用为主要市场方向，并列举观光车、清扫车、巡逻车、快递车等场景。请分析其市场进入与商业化路径是否清晰：优先切入的细分场景选择逻辑、与“ICU+算法一体化平台”的产品形态匹配度、以及从试点到规模销售的关键假设。若提案未给出定价/付费方/采购流程等信息，请先指出缺失，再讨论其对商业化可行性的影响。",
-          "question_en": "The project targets special-purpose operating vehicles and unmanned-system applications, listing sightseeing, cleaning, patrol, and delivery vehicles. Analyze whether the market entry and commercialization path is clear: the rationale for prioritizing sub-scenarios, fit with the “ICU + algorithm-integrated platform” product form, and key assumptions from pilots to scaled sales. If pricing/payer/procurement details are missing, please state the gap first and discuss its impact on commercialization feasibility.",
-          "answer_type": "analysis",
-          "priority": 1,
-          "links_to": {
-            "key_points": [
-              6,
-              9
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "strategy_q03",
-          "dimension": "strategy"
-        },
-        {
-          "aspect": "partnership_and_business_model",
-          "question_zh": "提案提出“与整车企业合作建立渠道与应用体系”，并列举万向、玛西尔、洪都、菜鸟、云乐等已提出需求。请评价该合作策略的可落地性：合作模式（联合开发/供货/授权/服务）是否明确、渠道与交付边界是否清晰、以及对单一或少数合作方依赖的风险。若提案未说明合同形态或排他性安排，请先指出缺失，再分析其影响。",
-          "question_en": "The proposal plans to “cooperate with vehicle OEMs to build channels and an application system,” and mentions demand from Wanxiang, Maxier, Hongdu, Cainiao, and Yunle. Evaluate the executability of this partnership strategy: clarity of cooperation model (co-development/supply/licensing/service), channel and delivery boundaries, and dependency risk on one or a few partners. If contract forms or exclusivity terms are not described, please state the gap first and analyze its impact.",
-          "answer_type": "rating",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              7
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "strategy_q04",
-          "dimension": "strategy"
-        },
-        {
-          "aspect": "compliance_strategy",
-          "question_zh": "针对特种车辆自动驾驶与“安全控制”等能力，提案在合规/标准/准入路径方面提供的信息有限。请在1-5分尺度上评价其合规策略成熟度，并说明：是否明确了适用的安全要求、测试/审计思路、以及从改造到前装过程中合规责任如何划分。若提案未给出相关细节，请先指出缺失，再说明该缺口带来的主要风险。",
-          "question_en": "For special-vehicle autonomous driving and capabilities such as “safety control,” the proposal provides limited detail on compliance/standards/access pathways. Rate the maturity of its compliance strategy on a 1–5 scale, and explain whether it clarifies applicable safety requirements, test/audit approach, and how compliance responsibilities are allocated when moving from retrofit to OEM. If details are missing, please state the gap first and describe the key risks introduced.",
-          "answer_type": "rating",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              2,
-              4
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "strategy_q05",
-          "dimension": "strategy"
-        },
-        {
           "aspect": "implementation_development_path",
-          "question_zh": "风险部分提到以表格列出“风险程度/风险因素/应对方式”，但已抽取信息未展开具体风险因素。请指出该风险识别与量化的主要缺口，并给出你认为对该项目战略落地最关键的3类风险（例如技术、供应链/交付、市场/合作等）及其优先级；如果提案未提供证据支撑，请明确说明信息缺失。",
-          "question_en": "The risk section is presented as a table (“risk level / risk factors / responses”), but the extracted content does not specify concrete risk factors. Identify the main gaps in risk identification and quantification, and list the three most critical risk categories for strategic execution (e.g., technical, supply/delivery, market/partnership) with priorities. If the proposal lacks supporting evidence, explicitly state the information gap.",
-          "answer_type": "analysis",
+          "question_zh": "请对该项目的实施落地分阶段规划进行评分（1-5分），并说明关。",
+          "answer_type": "rating",
           "priority": 1,
           "links_to": {
             "key_points": [],
             "risks": [
               0
             ],
-            "mitigations": [
-              3
-            ]
-          },
-          "qid": "strategy_q06",
-          "dimension": "strategy"
-        },
-        {
-          "aspect": "compliance_strategy",
-          "question_zh": "文本称“政策风险较小”。请判断这一结论是否有充分论证：是否区分了政策环境与产品准入/安全责任等合规风险？若提案未提供论证依据或情景分析，请先指出缺失，再说明该“低政策风险”判断可能导致的战略盲区。",
-          "question_en": "The text claims that “policy risk is low.” Assess whether this conclusion is sufficiently justified: does it distinguish between general policy environment and compliance risks such as product access, safety liability, etc.? If the proposal lacks evidence or scenario analysis, please state the gap first and explain the strategic blind spots this “low policy risk” assumption may create.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [],
-            "risks": [
-              1
-            ],
             "mitigations": []
           },
-          "qid": "strategy_q07",
-          "dimension": "strategy"
-        },
-        {
-          "aspect": "scaling_and_globalization",
-          "question_zh": "提案提出“面向全球无人系统市场”并计划在第2/3年A轮后拓展至“4个以上商用无人驾驶产品系列、形成规模销售”。请评估其规模化/平台化策略的完整性：平台标准形成路径、跨场景复用能力（ICU与算法平台如何复用）、以及从单点合作到多产品系列扩展的组织与交付能力假设。若提案未说明平台标准或规模化约束，请先指出缺失，再分析其对中长期扩展的风险。",
-          "question_en": "The proposal targets the “global unmanned systems market” and plans (after a Series A in year 2/3) to expand to “4+ commercial unmanned driving product lines” and achieve scaled sales. Evaluate the completeness of its scaling/platform strategy: path to platform standardization, cross-scenario reusability (how ICU and the algorithm platform are reused), and assumptions on organizational/delivery capability from single-partner deals to multi-line expansion. If platform standards or scaling constraints are not described, please state the gap first and analyze the long-term risks.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              0,
-              5,
-              9
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "strategy_q08",
+          "qid": "strategy_q03",
           "dimension": "strategy"
         }
       ]
@@ -427,17 +164,13 @@
       "questions": [
         {
           "aspect": "novelty_vs_state_of_art",
-          "question_zh": "请基于提案对“自动驾驶智能计算单元（ICU/机脑）”的描述，明确指出其相对现有自动驾驶计算平台/控制器方案的“真正创新点”分别体现在哪些层面（异构多处理器融合、混核操作系统、多核通信、安全控制、机器学习算法框架、以及中间件/机器人操作系统/算法库的软硬件一体化）。如果提案未对“对标对象/基线方案”进行详细说明，请先指出这一信息缺失，再讨论其对创新性判断的影响。",
-          "question_en": "Based on the proposal’s description of the “Autonomous Driving Intelligent Computing Unit (ICU/‘brain’)”, please identify the *true* innovations versus existing autonomous driving compute platforms/controllers, specifying which innovations lie in heterogeneous multi-processor integration, mixed-criticality OS, multi-core communication, safety control, ML algorithm frameworks, and the HW-SW co-designed stack (middleware/robot OS/algorithm libraries). If the proposal does not clearly define the benchmarking baselines, please first state this information gap and then discuss its impact on assessing novelty.",
+          "question_zh": "请分析该项目在车辆控制、物联网、人工智能和大数据技术方面相对。",
           "answer_type": "analysis",
           "priority": 1,
           "links_to": {
             "key_points": [
               0,
-              1,
-              2,
-              3,
-              4
+              1
             ],
             "risks": [],
             "mitigations": []
@@ -447,14 +180,11 @@
         },
         {
           "aspect": "differentiation_and_competitive_edge",
-          "question_zh": "在 1–5 分尺度上评价该 ICU/机脑方案相对同类或替代方案的差异化竞争优势强度（例如：对图像/雷达处理与高速网络通信的支持、对电机控制/电源管理等控制域的覆盖、信息融合与决策算法的集成度、以及软硬件一体化带来的工程效率/可靠性）。请给出评分理由；如提案未给出可对比的性能/成本/安全性指标，请先说明信息缺失，再解释你如何在不完整信息下形成评分。",
-          "question_en": "On a 1–5 scale, rate the strength of this ICU/‘brain’ solution’s differentiated competitive edge versus similar or substitute solutions (e.g., support for vision/radar processing and high-speed networking, coverage of control domains such as motor control/power management, integration level of fusion and decision algorithms, and engineering efficiency/reliability from HW-SW co-design). Provide the rationale; if the proposal lacks comparable metrics on performance/cost/safety, please first state the information gap and explain how you derived the rating under incomplete information.",
+          "question_zh": "请评价该项目的核心竞争力与现有同类或替代方案相比的明确优势。",
           "answer_type": "rating",
           "priority": 1,
           "links_to": {
             "key_points": [
-              0,
-              3,
               4
             ],
             "risks": [],
@@ -464,121 +194,21 @@
           "dimension": "innovation"
         },
         {
-          "aspect": "evidence_strength_for_innovation",
-          "question_zh": "请评估提案中用于支撑创新点的证据强度：目前列举的“基于模型驱动的汽车软件开发”“汽车电子软件平台”“SmartOSEK操作系统平台”“实控系统仿真平台”“SmartSAR仿真测试系统”等成果，分别提供了哪些可验证证据（如原型、测试报告、对比实验、线上运行/部署、可重复的评测流程）来证明 ICU 关键技术（异构融合、多核通信、安全控制、机器学习框架）的有效性？如果提案未给出样本量、测试场景、指标体系或复现实验条件，请先指出缺口并分析其对评审结论的影响。",
-          "question_en": "Please assess the strength of evidence supporting the claimed innovations. For the listed outcomes (model-driven automotive software development, automotive electronics software platform, SmartOSEK OS platform, real-control system simulation platform, SmartSAR simulation/testing system), what verifiable evidence (e.g., prototypes, test reports, comparative experiments, real deployments, reproducible evaluation pipelines) is provided to validate ICU key technologies (heterogeneous integration, multi-core communication, safety control, ML frameworks)? If the proposal does not provide sample sizes, test scenarios, metrics, or reproducibility conditions, please first state these gaps and analyze their impact on the assessment.",
+          "aspect": "risk_of_obsolescence",
+          "question_zh": "请评估该项目在未来3-5年内被替代或快速过时的风险，结合项目。",
           "answer_type": "analysis",
-          "priority": 1,
+          "priority": 2,
           "links_to": {
             "key_points": [
-              2,
-              5,
-              6
+              0,
+              5
             ],
-            "risks": [],
+            "risks": [
+              0
+            ],
             "mitigations": []
           },
           "qid": "innovation_q03",
-          "dimension": "innovation"
-        },
-        {
-          "aspect": "ip_and_protection",
-          "question_zh": "提案列举了多项平台与开发理论成果（如“汽车电子V+开发理论”、多类平台与操作系统/仿真测试系统）。请分析这些成果在知识产权与资产化层面的可保护性与可防御性：哪些部分更适合专利保护，哪些更适合软件著作权/商业秘密/数据资产沉淀？如果提案未说明现有专利/软著/开源合规策略或权属边界，请先指出信息缺失，再评估其对中长期竞争壁垒的影响。",
-          "question_en": "The proposal lists multiple platform and development-theory outcomes (e.g., “Automotive Electronics V+ development theory”, various platforms, OS, and simulation/testing systems). Please analyze their protectability and defensibility from an IP/asset perspective: which parts are better suited for patents, which for software copyright, trade secrets, or data assets? If the proposal does not specify existing patents/copyrights, open-source compliance strategy, or ownership boundaries, please first state the information gap and then assess its impact on long-term competitive barriers.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              6,
-              7,
-              8
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "innovation_q04",
-          "dimension": "innovation"
-        },
-        {
-          "aspect": "platform_and_extensibility",
-          "question_zh": "从平台化与可拓展性角度，ICU/机脑被描述为包含中间件、机器人操作系统与算法库，并且团队已有多个“平台”积累（如共享大数据平台、数字孪生智能交通系统平台、无人驾驶平台等）。请分析：该 ICU 是否构成可迁移到更多特种车辆/更多自动驾驶功能栈的“平台型底座”，还是更偏单点产品？其可复用的接口/抽象层（例如对 GPU/MCU/DSP/FPGA 的统一抽象、对多核通信与安全控制的通用机制）在哪里？如果提案未给出模块边界、接口规范或生态策略，请先指出缺口并评估由此带来的扩展风险。",
-          "question_en": "From a platform and extensibility perspective, the ICU/‘brain’ is described as including middleware, a robot OS, and algorithm libraries, and the team also cites multiple prior “platform” assets (e.g., shared big-data platform, digital-twin intelligent transportation platform, autonomous driving platform). Please analyze whether this ICU is a reusable platform foundation transferable to more special-purpose vehicles and broader autonomy stacks, or mainly a point product. Where are the reusable interfaces/abstraction layers (e.g., unified abstraction over GPU/MCU/DSP/FPGA, generic mechanisms for multi-core communication and safety control)? If the proposal does not provide module boundaries, interface specs, or ecosystem strategy, please first state the gaps and assess the resulting extension risks.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              1,
-              4,
-              7
-            ],
-            "risks": [],
-            "mitigations": []
-          },
-          "qid": "innovation_q05",
-          "dimension": "innovation"
-        },
-        {
-          "aspect": "risk_of_obsolescence",
-          "question_zh": "在 1–5 分尺度上评价该方案在未来 3–5 年内“被替代或快速过时”的风险（1=风险低，5=风险高）。请结合提案强调的异构多处理器（GPU/MCU/DSP/FPGA）、混核操作系统、以及机器学习算法框架等要素，说明哪些部分更可能因硬件迭代/软件生态变化而过时，哪些部分可能形成较持久的壁垒。若提案未提供技术路线的版本演进/兼容性策略，请先指出缺口再给出评分依据。",
-          "question_en": "On a 1–5 scale, rate the risk that this solution will be replaced or become obsolete within 3–5 years (1=low risk, 5=high risk). Considering the proposal’s emphasis on heterogeneous multi-processors (GPU/MCU/DSP/FPGA), a mixed-criticality OS, and ML algorithm frameworks, explain which components are more likely to become obsolete due to hardware iteration or ecosystem shifts, and which may form more durable barriers. If the proposal does not provide a roadmap for version evolution/compatibility, please first state the gap and then justify your rating.",
-          "answer_type": "rating",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              2,
-              4
-            ],
-            "risks": [
-              0,
-              1
-            ],
-            "mitigations": []
-          },
-          "qid": "innovation_q06",
-          "dimension": "innovation"
-        },
-        {
-          "aspect": "novelty_vs_state_of_art",
-          "question_zh": "风险条目中一方面提到技术风险子项包含“先进性”，另一方面又声称“项目采用的技术先进可靠，项目技术风险较小”。请你作为评审者指出：在缺少哪些关键对标证据或工程化验证信息时，这种“先进性风险较小”的结论可能不成立？你会要求补充哪些最小必要材料来闭环证明其先进性与可靠性（例如对比基线、关键指标、测试覆盖范围、失效模式分析等）？",
-          "question_en": "The risk section both flags “advancement” as a technical risk item and claims the technology is advanced and reliable with low technical risk. As a reviewer, under what missing benchmarking evidence or engineering validation details could this ‘low advancement risk’ conclusion fail? What minimum additional materials would you request to close the loop on proving advancement and reliability (e.g., baselines, key metrics, test coverage, failure-mode analysis)?",
-          "answer_type": "analysis",
-          "priority": 1,
-          "links_to": {
-            "key_points": [
-              2,
-              3
-            ],
-            "risks": [
-              0,
-              1
-            ],
-            "mitigations": []
-          },
-          "qid": "innovation_q07",
-          "dimension": "innovation"
-        },
-        {
-          "aspect": "differentiation_and_competitive_edge",
-          "question_zh": "提案的应对措施中提出“为特种车辆的自动驾驶提供高性能计算平台和整体解决方案”。请评估这一表述对降低“先进性/差异化不足”风险的充分性：它具体通过哪些可验证的差异化要素来支撑（例如软硬件一体化、异构融合、多核通信、安全控制、仿真测试体系等）？如果提案未给出可量化或可验收的差异化指标/验收标准，请先指出缺口，再说明该应对措施为何可能不足以及需要怎样补强。",
-          "question_en": "One mitigation states that the project will provide a high-performance computing platform and an end-to-end solution for special-purpose vehicle autonomous driving. Please evaluate whether this is sufficient to mitigate the risk of insufficient ‘advancement/differentiation’: which verifiable differentiators does it rely on (e.g., HW-SW co-design, heterogeneous integration, multi-core communication, safety control, simulation/testing toolchain)? If the proposal does not provide quantifiable or acceptance-ready differentiation metrics/criteria, please first state the gap, then explain why the mitigation may be insufficient and how it should be strengthened.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              0,
-              1,
-              2,
-              6
-            ],
-            "risks": [
-              0,
-              1
-            ],
-            "mitigations": [
-              0
-            ]
-          },
-          "qid": "innovation_q08",
           "dimension": "innovation"
         }
       ]
@@ -587,9 +217,8 @@
       "dimension": "feasibility",
       "questions": [
         {
-          "aspect": "resources_and_infrastructure",
-          "question_zh": "提案称“依托浙江大学智能汽车研究体系”。请分析该依托关系在数据、试验场景、算力/实验平台、测试验证流程等方面能提供哪些可长期稳定使用的资源；如果提案未说明资源可用性边界或使用授权，请先指出信息缺失，再评估其对落地可行性的影响。",
-          "question_en": "The proposal states it will “rely on the Zhejiang University intelligent vehicle research system.” Please analyze what long-term, stable resources this provides (data, pilot scenarios, compute/experimental platforms, testing & validation processes). If the proposal does not specify availability boundaries or usage authorization, first state this information gap and then assess its impact on feasibility.",
+          "aspect": "funding_and_budget_planning",
+          "question_zh": "请分析项目的资金来源和预算分配的合理性，尤其是政府科技扶持资。",
           "answer_type": "analysis",
           "priority": 1,
           "links_to": {
@@ -603,19 +232,16 @@
           "dimension": "feasibility"
         },
         {
-          "aspect": "funding_and_budget_planning",
-          "question_zh": "在1-5分尺度上评价该项目资金与预算规划的可信度与可持续性（初期投资5500万、资金来源“扶持资金+团队自筹”、第一年总成本2000、计划第2/3年A轮融资）。如提案未给出成本口径、现金流节奏或资金到位条件，请先指出缺口再评分并说明理由。",
-          "question_en": "On a 1–5 scale, rate the credibility and sustainability of the funding and budget plan (initial investment 55 million; funding sources “support funds + team self-funding”; Year-1 total cost 2000; planned Series A in Year 2/3). If the proposal lacks cost definitions, cash-flow timing, or funding conditions, first state the gaps, then rate and justify.",
-          "answer_type": "rating",
+          "aspect": "risk_management",
+          "question_zh": "项目面临的市场风险、技术风险和工程风险的管控程度为严重，请评。",
+          "answer_type": "analysis",
           "priority": 1,
           "links_to": {
             "key_points": [
-              2,
-              3,
-              5
+              3
             ],
             "risks": [
-              4
+              0
             ],
             "mitigations": []
           },
@@ -624,120 +250,15 @@
         },
         {
           "aspect": "operational_execution_plan",
-          "question_zh": "提案给出产品研发时间为2018-2020，并计划到2020年建立“可靠、安全、实时性强的智能网联汽车智能化平台”并形成“平台相关标准”。请评估该实施路径是否足够具体（关键里程碑、验收指标、责任分工、依赖项）；如提案未说明，请先指出缺失再分析其对可执行性的影响。",
-          "question_en": "The proposal sets R&D for 2018–2020 and plans by 2020 to build a “reliable, safe, real-time intelligent connected vehicle platform” and related standards. Assess whether the execution plan is sufficiently specific (milestones, acceptance metrics, ownership, dependencies). If not specified, first state the missing details and then analyze the impact on executability.",
-          "answer_type": "analysis",
-          "priority": 1,
+          "question_zh": "请评价项目的实施路径是否具体清晰，特别是关键任务和时间表的合。",
+          "answer_type": "rating",
+          "priority": 2,
           "links_to": {
-            "key_points": [
-              4
-            ],
+            "key_points": [],
             "risks": [],
             "mitigations": []
           },
           "qid": "feasibility_q03",
-          "dimension": "feasibility"
-        },
-        {
-          "aspect": "risk_management",
-          "question_zh": "风险表覆盖市场/技术/工程/资金/政策等，但“应对方式”细节较少。请逐项评估这些风险识别是否可操作（是否有触发条件、量化指标、责任人、预案），并指出最需要补充的3项应对细节。",
-          "question_en": "The risk table covers market/technical/engineering/funding/policy risks, but mitigation details are limited. Please assess whether the risk identification is actionable (triggers, quantitative indicators, owners, contingency plans) and list the top 3 mitigation details that must be added.",
-          "answer_type": "analysis",
-          "priority": 1,
-          "links_to": {
-            "key_points": [
-              7
-            ],
-            "risks": [
-              0,
-              2,
-              3,
-              4,
-              5
-            ],
-            "mitigations": [
-              0
-            ]
-          },
-          "qid": "feasibility_q04",
-          "dimension": "feasibility"
-        },
-        {
-          "aspect": "risk_management",
-          "question_zh": "针对“技术风险”（先进性、可靠性、适用性、可得性），请分析其对“高性能计算平台和整体解决方案”交付的关键影响点，以及最小可行的验证/测试闭环应如何设计；如提案未给出测试指标或验证场景，请先指出缺失再分析影响。",
-          "question_en": "For the “technical risks” (advancement, reliability, applicability, availability), analyze the key impacts on delivering the “high-performance computing platform and overall solution,” and what a minimum viable verification/testing loop should look like. If test metrics or validation scenarios are not provided, first state the gaps and then analyze the impact.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              4
-            ],
-            "risks": [
-              2
-            ],
-            "mitigations": [
-              2,
-              3
-            ]
-          },
-          "qid": "feasibility_q05",
-          "dimension": "feasibility"
-        },
-        {
-          "aspect": "implementation_barriers",
-          "question_zh": "渠道体系提到“与整车企业合作，建立产品应用体系”，并称“万向、玛西尔、洪都、菜鸟、云乐等”已提出明确需求。请评估从“需求”到“规模销售”的落地阻力（集成改造、验收标准、运维责任、采购周期等）；如提案未说明合作模式或试点计划，请先指出缺失再评估风险。",
-          "question_en": "The channel plan mentions cooperating with OEMs to build an application system, and states that “万向、玛西尔、洪都、菜鸟、云乐等” have clear demand. Evaluate the barriers from “demand” to “scaled sales” (integration changes, acceptance criteria, O&M ownership, procurement cycles). If the cooperation model or pilot plan is not specified, first state the gaps and then assess the risk.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              6,
-              5
-            ],
-            "risks": [
-              0
-            ],
-            "mitigations": []
-          },
-          "qid": "feasibility_q06",
-          "dimension": "feasibility"
-        },
-        {
-          "aspect": "timeline_and_resource_alignment",
-          "question_zh": "在1-5分尺度上评价“时间表—资源—目标”的匹配度：2018-2020完成平台与标准、并在第2/3年推进A轮融资与产品系列扩展。若提案未给出人力配置、关键岗位或并行任务安排，请先指出缺口再评分并说明可能的瓶颈期。",
-          "question_en": "On a 1–5 scale, rate the alignment of timeline–resources–goals: completing the platform and standards by 2020, and pursuing Series A plus product-line expansion in Year 2/3. If staffing, key roles, or parallel work plans are not provided, first state the gaps, then rate and explain likely bottleneck periods.",
-          "answer_type": "rating",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              4,
-              5
-            ],
-            "risks": [
-              3,
-              4
-            ],
-            "mitigations": []
-          },
-          "qid": "feasibility_q07",
-          "dimension": "feasibility"
-        },
-        {
-          "aspect": "compliance_and_procurement_feasibility",
-          "question_zh": "提案提到政策风险较小且符合国家及地方产业政策。请评估在真实采购/支付与准入审批流程中仍可能遇到的合规与落地障碍（例如特种车辆自动驾驶相关的准入、测试、责任界定等）；如提案未说明目标应用场景的合规路径，请先指出信息缺失再分析其影响。",
-          "question_en": "The proposal claims policy risk is low and aligned with national/local industrial policies. Assess the remaining compliance and go-to-procurement/payment barriers in real deployment (e.g., access approval, testing, liability definition for special-vehicle autonomous driving). If the compliance pathway for target scenarios is not described, first state the information gap and then analyze its impact.",
-          "answer_type": "analysis",
-          "priority": 2,
-          "links_to": {
-            "key_points": [
-              7
-            ],
-            "risks": [
-              5
-            ],
-            "mitigations": []
-          },
-          "qid": "feasibility_q08",
           "dimension": "feasibility"
         }
       ]

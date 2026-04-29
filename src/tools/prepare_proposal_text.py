@@ -251,7 +251,13 @@ def prepare_text(file_path: Path, proposal_id: str, use_ocr: bool = True):
 def main():
     parser = argparse.ArgumentParser(description="Stage 0: 提案文本准备（含 OCR + 自动选最新提案）")
     parser.add_argument("--file", required=False, help="提案文件路径（PDF/DOCX/TXT）。不填则自动选最新提案")
-    parser.add_argument("--proposal_id", required=False, help="提案 ID（用于输出目录名，不填则用文件名）")
+    parser.add_argument(
+        "--proposal-id",
+        "--proposal_id",
+        dest="proposal_id",
+        required=False,
+        help="提案 ID（用于输出目录名，不填则用文件名）",
+    )
     parser.add_argument("--no_ocr", action="store_true", help="禁用 OCR（仅调试用）")
     args = parser.parse_args()
 

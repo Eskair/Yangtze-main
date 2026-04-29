@@ -21,6 +21,7 @@ Stage 2 · 维度构建器（build_dimensions_from_facts.py）
 import os
 import json
 import argparse
+import time
 from pathlib import Path
 from typing import List, Dict, Any
 
@@ -49,6 +50,39 @@ DIMENSION_NAMES = ["team", "objectives", "strategy", "innovation", "feasibility"
 
 # 全局 client 复用（OpenAI 官方或本机兼容端点）
 client = make_openai_client()
+
+
+def _chat_completion_with_retry(**kwargs):
+    """
+    对偶发超时做轻量重试，避免整批维度构建被单次请求打断。
+    可用环境变量控制：
+      - LLM_API_MAX_RETRIES（默认 2，即最多 3 次）
+      - LLM_API_RETRY_BACKOFF_SECONDS（默认 3.0）
+    """
+    max_retries = int(os.getenv("LLM_API_MAX_RETRIES", "2"))
+    base_backoff = float(os.getenv("LLM_API_RETRY_BACKOFF_SECONDS", "3.0"))
+    last_exc: Exception | None = None
+
+    for attempt in range(max_retries + 1):
+        try:
+            return client.chat.completions.create(**kwargs)
+        except Exception as e:
+            last_exc = e
+            is_timeout = (
+                "timeout" in str(e).lower()
+                or e.__class__.__name__ in ("APITimeoutError", "ReadTimeout", "TimeoutException")
+            )
+            if (not is_timeout) or attempt >= max_retries:
+                raise
+            wait_s = base_backoff * (2 ** attempt)
+            print(
+                f"[WARN] LLM 请求超时，准备重试 {attempt + 1}/{max_retries}，"
+                f"等待 {wait_s:.1f}s ..."
+            )
+            time.sleep(wait_s)
+
+    # 理论上不会走到这里；保留防御式抛错，便于调试
+    raise RuntimeError(f"LLM 请求失败（重试后仍失败）：{last_exc}")
 
 # 注意：这里用 {dimension_name} 标记占位，其它所有 { } 都是字面量 JSON 示例
 # 后面用 .replace("{dimension_name}", xxx) 而不是 .format()
@@ -383,7 +417,7 @@ def call_llm_for_dimension(dimension_name: str, facts: List[Dict[str, Any]]) -> 
         },
     ]
 
-    resp = client.chat.completions.create(
+    resp = _chat_completion_with_retry(
         model=OPENAI_MODEL,
         messages=messages,
         response_format={"type": "json_object"},
@@ -525,7 +559,9 @@ def main():
         description="Stage 2: 基于 raw_facts.jsonl 构建五个维度的 dimensions_v2.json"
     )
     parser.add_argument(
+        "--proposal-id",
         "--proposal_id",
+        dest="proposal_id",
         required=False,
         help="提案 ID（对应 src/data/extracted/<proposal_id>）",
     )

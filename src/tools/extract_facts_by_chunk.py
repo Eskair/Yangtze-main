@@ -770,7 +770,9 @@ def main():
         description="Stage 1: 按 chunk 抽取原子事实（raw_facts.jsonl）"
     )
     parser.add_argument(
+        "--proposal-id",
         "--proposal_id",
+        dest="proposal_id",
         required=False,
         help="提案 ID（对应 src/data/prepared/<proposal_id>）",
     )

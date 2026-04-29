@@ -67,8 +67,9 @@ CONFIG_QS_DIR.mkdir(parents=True, exist_ok=True)
 OPENAI_MODEL = getenv_model()
 PROVIDER = os.getenv("PROVIDER", "openai").lower()
 # 中英各一条的统一字符上限（1 汉字≈1 字符；英文按字符计）。
+# 主约束由出题 LLM 在约此字数内写「完整问句」；程序侧仅为兜底（见 clip_question_text）。
 # 需要更长评审式问题时可在 .env 设 MAX_QUESTION_CHARS=220 等。
-MAX_QUESTION_CHARS = int(os.getenv("MAX_QUESTION_CHARS", "30"))
+MAX_QUESTION_CHARS = int(os.getenv("MAX_QUESTION_CHARS", "60"))
 
 
 def _token_limit_kwargs(max_out_tokens: int) -> Dict[str, int]:  # updated 21-April-2026
@@ -86,13 +87,33 @@ PLATFORM_ASPECT_IDS = {
 }
 
 
-def _clip_question_text(text: str, lang: str = "zh") -> str:
+def clip_question_text(text: str, max_chars: int, lang: str = "zh") -> str:
+    """
+    题干长度兜底：优先在问号/句号等处分段截断，避免半句话。
+    「约 max_chars 字 + 语义完整」应由出题 LLM 完成；此处仅在超长时的最后防线。
+    """
     s = str(text or "").strip()
-    if len(s) <= MAX_QUESTION_CHARS:
+    if max_chars <= 0:
+        return ""
+    if len(s) <= max_chars:
         return s
+    window = s[:max_chars]
+    min_keep = max(10, max_chars // 5)
     if lang == "en":
-        return s[:MAX_QUESTION_CHARS].rstrip(" ,;:.") + "."
-    return s[:MAX_QUESTION_CHARS].rstrip("，。；：;,. ") + "。"
+        for sep in ("?", ".", ";", ","):
+            i = window.rfind(sep)
+            if i >= min_keep:
+                return s[: i + 1].strip()
+        return window.rstrip() + "…"
+    for sep in ("？", "?", "。", "；", ";", "，", ","):
+        i = window.rfind(sep)
+        if i >= min_keep:
+            return s[: i + 1].strip()
+    return window.rstrip() + "……"
+
+
+def _clip_question_text(text: str, lang: str = "zh") -> str:
+    return clip_question_text(text, MAX_QUESTION_CHARS, lang)
 
 def _looks_like_team_bio_question(q_zh: str, q_en: str) -> bool:
     """简单用关键词判断一个问题是不是在问团队履历 / 经验（仅用于 team 维度兜底）。"""
@@ -526,6 +547,8 @@ QUESTION_PROMPT_TEMPLATE = """
 4. 语言与形式（全程中文）：
    - 每个问题只输出中文题干 question_zh；不得生成英文题干或其它语种题干。
    - 问题文本中可以适当提及「该项目」「该团队」「该技术方案」等泛称，不必重复 payload 里的长段原文。
+   - **题干长度（极其重要）**：每条 question_zh 建议控制在约 **{max_question_chars_hint}** 个汉字（字符）以内；必须先保证【一整句语义完整、能够以规范问号「？」收尾】，不要为了凑字数而写到半截就结束。
+   - 若信息量较多，请改写得更紧凑（合并修饰、去掉套话），而不是输出超长后指望程序截断。
 
 【数量与优先级要求】
 - 我会给出推荐问题数量区间（见下文「生成数量提示」）；请将该区间当作硬目标，尽量贴合。
@@ -606,6 +629,7 @@ def call_llm_for_dimension_questions(
         QUESTION_PROMPT_TEMPLATE
         .replace("{dimension_name}", dimension_name)
         .replace("{dimension_focus_zh}", focus_zh)
+        .replace("{max_question_chars_hint}", str(MAX_QUESTION_CHARS))
     )
 
     if target_max <= 4:
@@ -644,6 +668,8 @@ def call_llm_for_dimension_questions(
         "content": (
             "你是一个严谨的通用技术项目评审专家，负责为评审系统设计结构化问题。"
             "默认全程使用中文：输出 JSON 中每条问题的 question_zh 必须为中文，不得输出英文或其它语种题干。"
+            f"每条 question_zh 建议在约 {MAX_QUESTION_CHARS} 字内写成一整句完整问句并以「？」结尾；"
+            "宁可表述紧凑也不要输出半截问题。"
         ),
     }
 
@@ -663,6 +689,8 @@ def call_llm_for_dimension_questions(
             attempt_user_content += (
                 "\n\n=== 长度硬约束（防止截断）===\n"
                 f"- 每条 question_zh 不得超过 {MAX_QUESTION_CHARS} 个字符；\n"
+                "- 必须先保证语义完整：一整句、能以「？」收尾；禁止写到一半就停；\n"
+                "- 过长时请压缩措辞而非加长；\n"
                 "- links_to 中的下标列表保持简短；\n"
                 "- 不要输出注释或 Markdown。"
             )
@@ -725,7 +753,7 @@ def call_llm_for_dimension_questions(
         if not q_zh:
             continue
 
-        # 再加一道硬截断，避免极长句子在后续阶段造成解析和批量答题负担。
+        # 超长兜底截断（优先在句末；主约束在出题 prompt）
         q_zh = _clip_question_text(q_zh, "zh")
 
         if answer_type not in ["analysis", "rating", "yes_no", "open"]:
@@ -809,10 +837,8 @@ def call_llm_for_dimension_questions(
                 extra_q_team = {
                     "aspect": "leadership_experience",  # 在 DIMENSION_CONFIG['team']['aspects'] 里已经存在
                     "question_zh": _clip_question_text((
-                        "基于提案中对核心成员和项目负责人的教育背景、工程/产业化经验及既往重大项目记录的描述，"
-                        "您如何评价该团队在将本项目推进至规模化应用和商业落地方面的整体能力？"
-                        "如果提案对关键履历或可验证业绩描述不够具体，请在回答中先指出这一信息缺失，"
-                        "并讨论其对评估结果的影响。"
+                        "提案对核心成员履历与产业化经验的描述是否足以支撑规模化落地？"
+                        "若依据不足请先说明信息缺口及其对评估的影响。"
                     ), "zh"),
                     "answer_type": "analysis",
                     "priority": 1,
@@ -840,10 +866,8 @@ def call_llm_for_dimension_questions(
                 extra_q_market = {
                     "aspect": aspect_id,
                     "question_zh": _clip_question_text((
-                        "结合提案中关于目标市场规模、增长率、主要竞争对手或目标客户群体的描述，"
-                        "请评估本项目在所瞄准细分市场中的定位、竞争压力以及拟采用的市场进入/商业化策略是否合理。"
-                        "如果提案中缺乏具体的市场规模或竞争格局数据，请在回答时先指出这一信息缺失，"
-                        "并分析其对评估结论的影响。"
+                        "提案对目标市场与竞争格局的表述是否足以支撑定位与进入策略判断？"
+                        "关键数据缺失时应如何影响评估结论？"
                     ), "zh"),
                     "answer_type": "analysis",
                     "priority": 1,
@@ -1039,7 +1063,9 @@ def main():
         description="Stage 3: 基于 dimensions_v2.json 为五个维度生成差异化问题集（v3.1, 带 links_to + 防幻觉）"
     )
     parser.add_argument(
+        "--proposal-id",
         "--proposal_id",
+        dest="proposal_id",
         required=False,
         help="提案 ID（对应 src/data/extracted/<proposal_id>）",
     )

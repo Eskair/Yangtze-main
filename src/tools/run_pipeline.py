@@ -52,7 +52,7 @@ def run_full_pipeline(proposal_id: str = "", proposal_file: str = ""):
     if proposal_file:
         prepare_cmd.extend(["--file", proposal_file])
     if proposal_id:
-        prepare_cmd.extend(["--proposal_id", proposal_id])
+        prepare_cmd.extend(["--proposal-id", proposal_id])
     run_cmd(prepare_cmd, env=env)
 
     # 准备阶段后确定最终 pid（若未显式传入则以最新 prepared 为准）
@@ -62,15 +62,15 @@ def run_full_pipeline(proposal_id: str = "", proposal_file: str = ""):
     mark_stage("prepare_proposal_text", {"proposal_id": pid})
 
     # 2) facts 抽取
-    run_cmd(["python", "src/tools/extract_facts_by_chunk.py", "--proposal_id", pid], env=env)
+    run_cmd(["python", "src/tools/extract_facts_by_chunk.py", "--proposal-id", pid], env=env)
     mark_stage("extract_facts_by_chunk")
 
     # 3) 由 facts 构建维度
-    run_cmd(["python", "src/tools/build_dimensions_from_facts.py", "--proposal_id", pid], env=env)
+    run_cmd(["python", "src/tools/build_dimensions_from_facts.py", "--proposal-id", pid], env=env)
     mark_stage("build_dimensions_from_facts")
 
     # 4) 生成问题
-    run_cmd(["python", "src/tools/generate_questions.py", "--proposal_id", pid], env=env)
+    run_cmd(["python", "src/tools/generate_questions.py", "--proposal-id", pid], env=env)
     mark_stage("generate_questions")
 
     # 5) LLM 回答
@@ -94,7 +94,13 @@ def run_full_pipeline(proposal_id: str = "", proposal_file: str = ""):
 
 def parse_args():
     ap = argparse.ArgumentParser(description="Run canonical Yangtze pipeline with shared context")
-    ap.add_argument("--proposal_id", default="", help="显式提案 ID（可选）")
+    ap.add_argument(
+        "--proposal-id",
+        "--proposal_id",
+        dest="proposal_id",
+        default="",
+        help="显式提案 ID（可选）",
+    )
     ap.add_argument("--file", default="", help="显式提案文件路径（可选）")
     return ap.parse_args()
 

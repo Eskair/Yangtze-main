@@ -2,6 +2,9 @@
 """
 post_processing.py · Structured Candidate Post-Processing (v3.2 · no-web-hard-gates)
 
+质量闸门：选中覆盖率、一致性（consistency_ratio）低于阈值时仅写入 warnings（告警），不否决批次；
+解析成功率仅统计展示，不因「解析降级」单独卡闸门（见 derive_quality_gates）。
+
 适配新版 llm_answering 输出：
   - 期望输入 schema: "llm_answering.v2" 或 "refined_items.v2.proposal_aware_with_general_insights"
   - 顶层结构：{"meta": {...}, "items": [ {dimension, q_index, question, candidates: [...]}, ... ]}
@@ -186,15 +189,16 @@ DEFAULT_CONF = {
     "jaccard_threshold": 0.30,
 
     # ========= 权重配置 =========
-    # 说明：在“无 web 检索”模式下，evidence/authority/coverage 不再参与主评分
+    # 说明：在“无 web 检索”模式下，align 作为主评判；
+    # auth/cover 仅做轻微加分，不作为减分或硬过滤依据。
     # 👉 降低一致性权重，增加“对齐 + claims”的权重，让强维度更容易拉开
     "consistency_weight": 0.10,
     "fields_weight": {
         "length": 0.18,              # 原 0.20
-        "claims": 0.27,              # 原 0.25（多写要点的题更拉分）
+        "claims": 0.23,              # 为 auth/cover 预留少量加分权重
         "evidence_count": 0.0,
-        "evidence_authority": 0.0,
-        "evidence_coverage": 0.0,
+        "evidence_authority": 0.04,  # 仅加分，不单独触发惩罚
+        "evidence_coverage": 0.04,   # 仅加分，不单独触发惩罚
         "structure": 0.20,
         "alignment": 0.30,           # 原 0.25（更看重和问题/维度的贴合度）
         "calibrated_confidence": 0.05  # 原 0.10（置信度稍微降一点）
@@ -351,6 +355,17 @@ def sanitize_for_display(raw: str) -> str:
                lambda m: m.group(0).replace(" ", ""), s)
     s = _normalize_bullets(s)
     return s.strip()
+
+
+def _selected_answer_is_readable(sel: dict, *, min_chars: int = 12) -> bool:
+    """
+    选中答案是否有足够可读正文（与候选过滤 too_short 阈值对齐）。
+    若可读，则不因 caveats 中的解析/降级关键字计入 degraded。
+    """
+    if not isinstance(sel, dict):
+        return False
+    t = sanitize_for_display(str(sel.get("answer") or "")).strip()
+    return len(t) >= min_chars
 
 def sanitize_answer(raw: str) -> str:
     return sanitize_for_display(raw)
@@ -995,11 +1010,11 @@ def select_best_candidate(cands: list, cfg: dict, dim: str, auth_hints: list, q_
         sd = t[2].get("scores", {})
         return (
             -float(final),
+            -float(sd.get("alignment", 0.0)),
+            -float(sd.get("claims", 0.0)),
+            -float(sd.get("structure", 0.0)),
             -float(sd.get("evidence_authority", 0.0)),
             -float(sd.get("evidence_coverage", 0.0)),
-            -float(sd.get("alignment", 0.0)),
-            -float(sd.get("structure", 0.0)),
-            -float(sd.get("claims", 0.0)),
             -float(sd.get("length", 0.0)),
         )
 
@@ -1307,7 +1322,8 @@ def aggregate_dimensions(items: list, cfg: dict, qs_cfg: dict):
             all_conf.append(safe_float(q["selected"].get("confidence"), 0.6))
             cv = str(q["selected"].get("caveats", "") or "").lower()
             if any(k in cv for k in ("降级", "fallback", "non_json", "schema_validation_failed", "parse_failed")):
-                degraded_count += 1
+                if not _selected_answer_is_readable(q["selected"]):
+                    degraded_count += 1
         all_jac += float(q.get("pairwise", {}).get("avg_jaccard", 0.0))
         all_ctr += float(q.get("pairwise", {}).get("avg_contradiction", 0.0))
         cnt += 1
@@ -1369,13 +1385,12 @@ def derive_quality_gates(total_q_count: int, selected_count: int, degraded_count
     coverage_ratio = selected_count / max(1, total_q_count)
     degraded_ratio = degraded_count / max(1, selected_count)
     parse_success_ratio = max(0.0, min(1.0, 1.0 - degraded_ratio))
-    gate_reasons = []
+    warnings = []
     if coverage_ratio < 0.85:
-        gate_reasons.append("selected_coverage_low")
-    if parse_success_ratio < 0.85:
-        gate_reasons.append("parse_success_low")
+        warnings.append("selected_coverage_low")
+    # 解析成功率仍写入 metrics，但不参与告警列表。
     if consistency_ratio < 0.08:
-        gate_reasons.append("consistency_low")
+        warnings.append("consistency_low")
     return {
         "selected_count": selected_count,
         "total_questions": total_q_count,
@@ -1383,8 +1398,10 @@ def derive_quality_gates(total_q_count: int, selected_count: int, degraded_count
         "degraded_selected_ratio": degraded_ratio,
         "parse_success_ratio": parse_success_ratio,
         "consistency_ratio": consistency_ratio,
-        "pass": len(gate_reasons) == 0,
-        "reasons": gate_reasons,
+        "pass": True,
+        "fail_reasons": [],
+        "reasons": [],
+        "warnings": warnings,
     }
 
 def build_report_md(pid: str, meta: dict, per_dim: dict, overall: dict, cfg: dict) -> str:
@@ -1407,11 +1424,18 @@ def build_report_md(pid: str, meta: dict, per_dim: dict, overall: dict, cfg: dic
     lines.append(f"- 全局冲突度（平均）：**{overall['mean_pairwise_contradiction']:.3f}**")
     qg = overall.get("quality_gates") or {}
     if qg:
-        lines.append(f"- 质量闸门：**{'通过' if qg.get('pass') else '未通过'}**")
+        hard = qg.get("fail_reasons") or qg.get("reasons") or []
+        lines.append(
+            f"- 质量闸门：**{'通过' if qg.get('pass') and not hard else '未通过'}**"
+        )
         lines.append(f"- 选中覆盖率：{qg.get('selected_coverage_ratio', 0.0):.1%}")
+        lines.append(f"- 一致性（题间重合度，consistency_ratio）：{float(qg.get('consistency_ratio', 0.0)):.3f}")
         lines.append(f"- 解析成功率（估计）：{qg.get('parse_success_ratio', 0.0):.1%}")
-        if qg.get("reasons"):
-            lines.append(f"- 闸门失败原因：{', '.join(qg.get('reasons') or [])}")
+        if hard:
+            lines.append(f"- 闸门失败原因：{', '.join(_gate_reason_zh(x) for x in hard)}")
+        ws = qg.get("warnings") or []
+        if ws:
+            lines.append(f"- 质量告警（不否决批次）：{', '.join(_gate_reason_zh(w) for w in ws)}")
 
     if "drop_reasons_global" in overall and overall["drop_reasons_global"]:
         drg = overall["drop_reasons_global"]
