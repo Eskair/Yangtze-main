@@ -1,3 +1,15 @@
 .env
 *.pyc
 __pycache__/
+.pytest_cache/
+
+# 流水线/工具生成的数据（本地重跑即得，勿提交）
+src/data/extracted/
+src/data/parsed/
+src/data/prepared/
+src/data/questions/
+src/data/refined_answers/
+src/data/expert_reports/
+src/data/reports/
+src/data/context/
+src/data/config/question_sets/generated_questions.json
