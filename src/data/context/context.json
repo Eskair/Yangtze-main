@@ -1,0 +1,16 @@
+{
+  "schema": "yangtze.run_context.v1",
+  "canonical_pipeline": "run_pipeline.py",
+  "proposal_id": "tzcl",
+  "source_path": "src/data/proposals/tzcl.pdf",
+  "started_at": "2026-04-28T22:01:59Z",
+  "updated_at": "2026-04-28T22:01:59Z",
+  "completed_stages": [
+    "prepare_proposal_text"
+  ],
+  "stage_meta": {
+    "prepare_proposal_text": {
+      "proposal_id": "tzcl"
+    }
+  }
+}

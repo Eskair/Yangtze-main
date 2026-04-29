@@ -1,0 +1,29 @@
+# Existing before today (baseline in repo)  # updated 21-April-2026
+langchain-community
+langchain-huggingface
+sentence-transformers
+chromadb
+numpy
+
+# Added today(21-April-2026) for full pipeline runtime  # updated 21-April-2026
+# LLM + env  # updated 21-April-2026
+openai  # updated 21-April-2026
+python-dotenv  # updated 21-April-2026
+
+# PDF/DOC parsing + OCR wrappers  # updated 21-April-2026
+pdfplumber  # updated 21-April-2026
+pdf2image  # updated 21-April-2026
+pytesseract  # updated 21-April-2026
+python-docx  # updated 21-April-2026
+pillow  # updated 21-April-2026
+
+# Web/content retrieval stack  # updated 21-April-2026
+requests  # updated 21-April-2026
+beautifulsoup4  # updated 21-April-2026
+trafilatura  # updated 21-April-2026
+duckduckgo-search  # updated 21-April-2026
+tavily-python  # updated 21-April-2026
+
+# Note: system apps installed separately (not pip):  # updated 21-April-2026
+# - Tesseract OCR  # updated 21-April-2026
+# - Poppler (required by pdf2image)  # updated 21-April-2026
