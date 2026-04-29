@@ -2,7 +2,7 @@
 
 AI 辅助评审流水线（维度抽取 → 出题 → 结构化答题 → 后处理 → 专家评审与报告）。
 
-流水线生成的中间数据位于 `src/data/extracted/`、`parsed/`、`prepared/`、`questions/`、`refined_answers/`、`expert_reports/`、`reports/` 等目录，**默认不纳入 Git**（见 `.gitignore`）；本地跑通管线即可重新生成。输入提案等需保留的可自行提交（例如 `src/data/proposals/`）。
+业务侧提供的提案 PDF 等放在 `src/data/proposals/<pid>/`，与流水线产物目录（`extracted/`、`parsed/`、`prepared/`、`questions/`、`refined_answers/`、`expert_reports/`、`reports/` 等）**一律默认不纳入 Git**（见 `.gitignore`）；仅供本地运行使用。
 
 开发时在仓库根目录运行工具模块，例如：
 

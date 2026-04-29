@@ -3,6 +3,10 @@
 __pycache__/
 .pytest_cache/
 
+# 用户提案等业务文件（非仓库本体；勿提交）。目录占位：
+src/data/proposals/*
+!src/data/proposals/.gitkeep
+
 # 流水线/工具生成的数据（本地重跑即得，勿提交）
 src/data/extracted/
 src/data/parsed/
