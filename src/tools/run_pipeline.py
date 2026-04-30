@@ -39,7 +39,8 @@ def run_full_pipeline(proposal_id: str = "", proposal_file: str = ""):
       4) generate_questions.py
       5) llm_answering.py
       6) post_processing.py
-      7) ai_expert_opinion.py
+      7) ai_expert_opinion.py（默认 --mode qa_evidence；若需全文/BP 优先可另跑一次：
+         python src/tools/ai_expert_opinion.py --pid <同一pid> --mode document_review）
       8) generate_final_report.py
     """
     env = os.environ.copy()

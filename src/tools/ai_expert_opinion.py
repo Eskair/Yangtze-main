@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-AI Expert Opinion · v4.1
-(dimension-first, QA-grounded, general_insights-aware, with local fallback)
+AI Expert Opinion · v5.0
+(dimension-first; BP/full-text narrative layer; dual mode: qa_evidence / document_review)
 --------------------------------------------------------------------
 设计目标：
-- 严格基于 post_processing_v2 的 metrics.json + final_payload.json（已选中答案）
-- 先对五个维度逐一做“带证据 + 行业通识层”的专家点评，再在本地代码中汇总成总体意见
-- 不让 LLM 看到任何具体分数，仅提供“强/中/弱”的文字提示，避免分数泄漏
-- 默认经 `local_openai` 连本机 OpenAI 兼容服务（也可用 .env 改回云上）；无法调用时自动退化为“纯本地规则版专家评审”（不依赖 LLM）
-- 总体意见采用「一段总括 + 分维度 bullet」形式，更适合给人看
+- **系统量化轨**：基于 metrics.json + final_payload（选中问答）生成各维点评与 verdict（分数仍为文字信号，避免向 LLM 泄漏原始数值）。
+- **叙事型 BP 轨**：注入 prepared/<pid>/full_text.txt 摘录 + extracted/<pid>/dimensions_v2.json 结构化摘要
+  + src/config/expert_golden/style_hints.md，生成 bp_review（简短/详细五维、叙事主观分），用于投资/技术 DD 式长文。
+- `--mode qa_evidence`（默认）：问答样本为主 + 全文辅证；`document_review`：全文/维度摘要为主，问答为辅（每维 2 条）。
+- 推荐 EXPERT_OPINION_MODEL 使用强模型（如 gpt-4o）并提高 EXPERT_HTTP_TIMEOUT_READ；失败时维度与 bp_review 均回退本地占位。
 """
 
 import os
@@ -19,7 +19,7 @@ import argparse
 from pathlib import Path
 from run_context import get_context_proposal_id
 from datetime import datetime
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional
 
 import requests
 from dotenv import load_dotenv
@@ -32,6 +32,10 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "src" / "data"
 REFINED_ROOT = DATA_DIR / "refined_answers"
 EXPERT_DIR = DATA_DIR / "expert_reports"
+PREPARED_DIR = DATA_DIR / "prepared"
+EXTRACTED_DIR = DATA_DIR / "extracted"
+# 可提交仓库的风格基准（非 data 下被 gitignore 的 expert_reports 产物）
+GOLDEN_HINTS_PATH = BASE_DIR / "src" / "config" / "expert_golden" / "style_hints.md"
 
 DIM_ORDER = ["team", "objectives", "strategy", "innovation", "feasibility"]
 DIM_LABELS_ZH = {
@@ -48,11 +52,24 @@ PROVIDER = os.getenv("PROVIDER", "openai").strip().lower()
 OPENAI_API_KEY = resolve_openai_api_key()
 OPENAI_API_BASE = resolve_openai_base_url()
 OPENAI_MODEL = getenv_model()
-OPENAI_EXPERT_MODEL = os.getenv("OPENAI_EXPERT_MODEL", "").strip() or OPENAI_MODEL
-EXPERT_MAX_TOKENS = int(os.getenv("EXPERT_MAX_TOKENS", "1400"))
+EXPERT_MAX_TOKENS = int(os.getenv("EXPERT_MAX_TOKENS", "4200"))
 EXPERT_MAX_RETRIES = int(os.getenv("EXPERT_MAX_RETRIES", "2"))
 TIMEOUT_CONNECT = int(os.getenv("HTTP_TIMEOUT_CONNECT", "12"))
 TIMEOUT_READ = int(os.getenv("HTTP_TIMEOUT_READ", "60"))
+EXPERT_FULLTEXT_MAX_CHARS = int(os.getenv("EXPERT_FULLTEXT_MAX_CHARS", "28000"))
+EXPERT_TIMEOUT_CONNECT = int(os.getenv("EXPERT_HTTP_TIMEOUT_CONNECT", "") or os.getenv("HTTP_TIMEOUT_CONNECT", "12"))
+EXPERT_TIMEOUT_READ = int(os.getenv("EXPERT_HTTP_TIMEOUT_READ", "") or os.getenv("HTTP_TIMEOUT_READ", "120"))
+
+
+def resolve_expert_model(cli_model: str = "") -> str:
+    m = (cli_model or "").strip()
+    if m:
+        return m
+    return (
+        os.getenv("EXPERT_OPINION_MODEL", "").strip()
+        or os.getenv("OPENAI_EXPERT_MODEL", "").strip()
+        or getenv_model()
+    )
 
 
 # ----------------- 小工具 -----------------
@@ -67,6 +84,89 @@ def read_json(p: Path) -> Any:
 def write_json(p: Path, obj: Any) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def load_proposal_full_text_excerpt(pid: str) -> Dict[str, Any]:
+    """注入 prepared/<pid>/full_text.txt 摘录，供叙事型 BP 评审。"""
+    path = PREPARED_DIR / pid / "full_text.txt"
+    if not path.exists():
+        return {
+            "available": False,
+            "path": str(path),
+            "excerpt": "",
+            "total_chars": 0,
+            "excerpt_chars": 0,
+            "truncated": False,
+            "note": "未找到 prepared/full_text.txt；请先运行 prepare_proposal_text。叙事评审将主要依赖问答与维度摘要。",
+        }
+    raw = path.read_text(encoding="utf-8", errors="ignore")
+    total = len(raw)
+    cap = max(4000, EXPERT_FULLTEXT_MAX_CHARS)
+    if total <= cap:
+        excerpt = raw
+        truncated = False
+    else:
+        excerpt = raw[:cap]
+        truncated = True
+    return {
+        "available": True,
+        "path": str(path),
+        "excerpt": excerpt,
+        "total_chars": total,
+        "excerpt_chars": len(excerpt),
+        "truncated": truncated,
+        "note": (
+            f"全文共 {total} 字符；本请求仅注入前 {len(excerpt)} 字符（可设 EXPERT_FULLTEXT_MAX_CHARS 调整）。"
+            if truncated
+            else "全文已在长度上限内完整注入。"
+        ),
+    }
+
+
+def build_dimensions_v2_exec_summary(pid: str) -> Dict[str, Any]:
+    """从 extracted/<pid>/dimensions_v2.json 生成结构化执行摘要，减少幻觉。"""
+    path = EXTRACTED_DIR / pid / "dimensions_v2.json"
+    if not path.exists():
+        return {
+            "available": False,
+            "path": str(path),
+            "note": "未找到 dimensions_v2.json；请先运行 build_dimensions_from_facts。",
+            "dimensions": {},
+        }
+    obj = read_json(path)
+    out: Dict[str, Any] = {}
+    for dim in DIM_ORDER:
+        block = obj.get(dim) or {}
+        if not isinstance(block, dict):
+            block = {}
+        kp = block.get("key_points") or []
+        rs = block.get("risks") or []
+        mt = block.get("mitigations") or []
+        summ = (block.get("summary") or "").strip()
+        if isinstance(kp, list):
+            kp_first = [str(x)[:220] for x in kp[:5]]
+        else:
+            kp_first = []
+        out[dim] = {
+            "summary_excerpt": (summ[:900] + "……") if len(summ) > 900 else summ,
+            "key_points_count": len(kp) if isinstance(kp, list) else 0,
+            "key_points_first": kp_first,
+            "risks_count": len(rs) if isinstance(rs, list) else 0,
+            "risks_first": [str(x)[:260] for x in (rs[:4] if isinstance(rs, list) else [])],
+            "mitigations_count": len(mt) if isinstance(mt, list) else 0,
+            "mitigations_first": [str(x)[:260] for x in (mt[:4] if isinstance(mt, list) else [])],
+        }
+    return {"available": True, "path": str(path), "dimensions": out}
+
+
+def load_golden_style_hints() -> str:
+    if not GOLDEN_HINTS_PATH.exists():
+        return ""
+    try:
+        txt = GOLDEN_HINTS_PATH.read_text(encoding="utf-8")
+        return txt[:8000]
+    except Exception:
+        return ""
 
 
 def detect_latest_pid() -> str:
@@ -233,13 +333,16 @@ def call_openai_chat(model: str,
                      max_tokens: int = 2600,
                      seed: int = None,
                      max_retries: int = 3,
-                     backoff: float = 1.8) -> Dict[str, Any]:
+                     backoff: float = 1.8,
+                     timeout: Optional[Tuple[int, int]] = None) -> Dict[str, Any]:
     """
     只负责“按给定参数调用一次 Chat Completions”，不判断 PROVIDER。
     是否调用由上层根据 .env 配置 & 开关决定。
     """
     if not OPENAI_API_KEY:
         raise RuntimeError("OPENAI_API_KEY 缺失，请在 .env 中配置。")
+
+    to = timeout if timeout is not None else (TIMEOUT_CONNECT, TIMEOUT_READ)
 
     url = OPENAI_API_BASE.rstrip("/") + "/chat/completions"
     headers = {
@@ -269,7 +372,7 @@ def call_openai_chat(model: str,
                 url,
                 headers=headers,
                 json=body,
-                timeout=(TIMEOUT_CONNECT, TIMEOUT_READ)
+                timeout=to,
             )
             if resp.status_code != 200:
                 last_err = f"{resp.status_code} - {resp.text[:400]}"
@@ -303,9 +406,10 @@ def build_dim_system_prompt() -> str:
         "· 维度级与逐问级 general_insights（行业通识建议，仅作对比基准，并不代表本项目已达成）；"
         "· dim_general_insights_covered：行业通识中，已在当前问答里部分体现的点；"
         "· dim_general_insights_missing：行业通识中，当前问答几乎未覆盖、但在实际评审中通常被视为重要的信息缺口；"
-        "· 该维度的部分问答样本（question/answer/claims/evidence_hints/general_insights）。"
-        "你的任务：\n"
-        "1）对于每个维度，基于问答内容 + strengths/risks 短语 + 证据方向 + general_insights，"
+        "· 该维度的部分问答样本（question/answer/claims/evidence_hints/general_insights）；"
+        "· 另附：提案全文摘录 proposal_full_text、维度结构化摘要 dimensions_structured_summary（来自抽取结果）。"
+        "你的任务（第一部分）：\n"
+        "1）对于每个维度，基于问答内容 + strengths/risks 短语 + 证据方向 + general_insights +（若有）全文摘录/维度摘要，"
         "   写出：summary / strengths / concerns / recommendations。\n"
         "   - 在 strengths 中，优先结合 dim_general_insights_covered 与具体问答内容，"
         "     明确指出项目已经在哪些方面达到了行业普遍要求。\n"
@@ -315,26 +419,85 @@ def build_dim_system_prompt() -> str:
         "   可以使用“从……可以看出……从而说明……”“目前材料显示……这一点是亮点/存在不足……”"
         "   “与行业中成熟做法相比，……”等多种句式，明确指出‘为什么好/为什么有风险’。"
         "   不要所有句子都以“因为……”“由于……”“从……来看”这类相同短语开头。\n"
-        "3）可以引用问答中的关键信息，但不要编造不存在的机构名称、注册号、具体数据。"
-        "4）严禁出现任何题号（如 Q1/Q2）、分数字符（0.71、71% 等）或内部指标名"
+        "3）可以引用问答或全文摘录中的关键信息，但不要编造不存在的机构名称、注册号、具体数据。"
+        "4）严禁在正文中出现任何题号（如 Q1/Q2）、内部算法分数字符（0.71、71% 等）或内部指标名"
         "   （alignment/coverage/authority/drift/对齐/漂移/覆盖/权威/overall_score/置信度 等）。"
-        "5）如果某个维度信息明显不足，可以给出 1–2 条保守结论，例如“当前问答中几乎没有提到……，"
-        "   因此该维度信息覆盖不足，需要补充材料”。\n"
-        "输出必须是严格 JSON，对每个维度都给出：summary（2–4 句）、strengths（3–5 条）、"
-        "concerns（3–5 条）、recommendations（3–5 条）。"
+        "   bp_review 中的 subjective_scores 允许出现 0–10 的阿拉伯数字作为「叙事主观分」，但不得与系统 metrics 混写。"
+        "5）如果某个维度信息明显不足，可以给出 1–2 条保守结论。\n"
         "除 JSON 键名等程序所需字段外，所有自然语言内容必须使用中文；不得输出整段英文论述。"
     )
 
-def build_dim_user_payload(pid: str,
-                           dim_inputs: Dict[str, Any]) -> Dict[str, Any]:
+
+def build_narrative_bp_addon(mode: str) -> str:
+    mh = (
+        "【模式：document_review】以 proposal_full_text 与 dimensions_structured_summary 为主；"
+        "dimensions_qa_context 仅作辅助参考。"
+        if mode == "document_review"
+        else "【模式：qa_evidence】须平衡使用问答样本与全文摘录/维度摘要；若全文缺失须在叙事评审中声明证据受限。"
+    )
+    return (
+        mh + "\n"
+        "你的任务（第二部分）：输出 bp_review，用于「叙事型 BP / 全文视角」评审（投资与技术 DD 风格），"
+        "必须与上述 dimensions 一并置于**同一个 JSON 根对象**中：根对象必须包含键 dimensions 与 bp_review。\n"
+        "硬性规则：\n"
+        "- 严格区分「材料叙述」与「可验证事实」：名单、合作、融资、里程碑若无审计或合同支撑，须写「材料声称/需在 DD 核验」。\n"
+        "- 「名单≠订单」：出现企业或机构名称不等于已签署合同或已回款。\n"
+        "- 财务预测须提示假设性，并与里程碑对齐讨论；不得写成已实现的业绩。\n"
+        "- 若材料未提供某类信息，必须写「材料未提供……无法确认」。\n"
+        "bp_review 的 JSON 结构必须为：\n"
+        "{\n"
+        '  "short_review": {\n'
+        '    "lead_paragraphs": ["段落1","段落2可选"],\n'
+        '    "dimension_one_line": {\n'
+        '       "team":"","objectives":"","strategy":"","innovation":"","feasibility":""\n'
+        "    },\n"
+        '    "system_vs_narrative_note": "解释叙事评审与系统自动问答打分的证据差异（一段话）",\n'
+        '    "material_timeliness": "材料时点、版本或时效风险说明；若无法识别日期须写明"\n'
+        "  },\n"
+        '  "detailed_review": {\n'
+        '    "team": {"advantages":[],"gaps":[],"due_diligence_questions":[]},\n'
+        '    "objectives": {"advantages":[],"gaps":[],"due_diligence_questions":[]},\n'
+        '    "strategy": {"advantages":[],"gaps":[],"due_diligence_questions":[]},\n'
+        '    "innovation": {"advantages":[],"gaps":[],"due_diligence_questions":[]},\n'
+        '    "feasibility": {"advantages":[],"gaps":[],"due_diligence_questions":[]}\n'
+        "  },\n"
+        '  "subjective_scores_10": {\n'
+        '    "team": 0, "objectives": 0, "strategy": 0, "innovation": 0, "feasibility": 0,\n'
+        '    "composite": 0\n'
+        "  }\n"
+        "}\n"
+        "说明：subjective_scores_10 为你基于材料给出的 **叙事主观分（0–10，一位小数）**，"
+        "不得声称等于系统算法；composite 为综合主观分。\n"
+    )
+
+
+def build_expert_system_prompt(mode: str) -> str:
+    return build_dim_system_prompt() + "\n\n" + build_narrative_bp_addon(mode)
+
+
+def build_expert_user_payload(
+    pid: str,
+    mode: str,
+    dim_inputs: Dict[str, Any],
+    full_text_bundle: Dict[str, Any],
+    dim_struct_summary: Dict[str, Any],
+    style_hints: str,
+) -> Dict[str, Any]:
     return {
         "pid": pid,
-        "task": "dimension_level_expert_opinion",
-        "note": "仅输出 dimensions 字段，其余由系统补充。",
-        "dimensions": dim_inputs,
-        "output_schema_hint": {
+        "mode": mode,
+        "task": "unified_dimension_and_bp_review",
+        "instruction": (
+            "输出单个 JSON 对象，顶层必须包含 dimensions 与 bp_review。"
+            "dimensions 各条目沿用 output_schema_hint_dimensions。"
+        ),
+        "proposal_full_text": full_text_bundle,
+        "dimensions_structured_summary": dim_struct_summary,
+        "style_hints_reference": style_hints or "",
+        "dimensions_qa_context": dim_inputs,
+        "output_schema_hint_root": {
             "type": "object",
-            "required": ["dimensions"],
+            "required": ["dimensions", "bp_review"],
             "properties": {
                 "dimensions": {
                     "type": "object",
@@ -346,13 +509,15 @@ def build_dim_user_payload(pid: str,
                                 "summary": {"type": "string"},
                                 "strengths": {"type": "array", "items": {"type": "string"}},
                                 "concerns": {"type": "array", "items": {"type": "string"}},
-                                "recommendations": {"type": "array", "items": {"type": "string"}}
-                            }
-                        } for dim in DIM_ORDER
-                    }
-                }
-            }
-        }
+                                "recommendations": {"type": "array", "items": {"type": "string"}},
+                            },
+                        }
+                        for dim in DIM_ORDER
+                    },
+                },
+                "bp_review": {"type": "object"},
+            },
+        },
     }
 
 
@@ -424,6 +589,59 @@ def clean_list(items: List[str]) -> List[str]:
         if t:
             out.append(t)
     return out
+
+
+def sanitize_bp_review(raw: Any) -> Dict[str, Any]:
+    """递归清洗 bp_review 中的字符串字段（去指标泄漏）。"""
+    if not isinstance(raw, dict):
+        return {}
+
+    def walk(o: Any) -> Any:
+        if isinstance(o, str):
+            return clean_text(o)
+        if isinstance(o, list):
+            return [walk(x) for x in o]
+        if isinstance(o, dict):
+            return {k: walk(v) for k, v in o.items()}
+        return o
+
+    out = walk(raw)
+    return out if isinstance(out, dict) else {}
+
+
+def build_local_bp_review_placeholder(
+    pid: str,
+    full_text_bundle: Dict[str, Any],
+    dim_struct_summary: Dict[str, Any],
+    reason: str = "",
+) -> Dict[str, Any]:
+    ft_ok = bool(full_text_bundle.get("available"))
+    ds_ok = bool(dim_struct_summary.get("available"))
+    note = (
+        f"（本地占位）未能生成 LLM 叙事评审。"
+        f"{reason} "
+        f"全文摘录={'可用' if ft_ok else '不可用'}；"
+        f"dimensions_v2 摘要={'可用' if ds_ok else '不可用'}。"
+        f"建议配置 EXPERT_OPINION_MODEL=gpt-4o 并增大 EXPERT_HTTP_TIMEOUT_READ 后重试。"
+    )
+    z = {d: "（待生成）" for d in DIM_ORDER}
+    empty_dim = {
+        d: {"advantages": [], "gaps": [], "due_diligence_questions": []}
+        for d in DIM_ORDER
+    }
+    return {
+        "short_review": {
+            "lead_paragraphs": [note],
+            "dimension_one_line": z,
+            "system_vs_narrative_note": (
+                "系统自动问答评分（metrics）衡量证据链与一致性；叙事评审须独立调用大模型阅读 BP。"
+                "二者分数含义不同，不得混同。"
+            ),
+            "material_timeliness": "无法评估（叙事模块未生成）。",
+        },
+        "detailed_review": empty_dim,
+        "subjective_scores_10": {**{d: 0.0 for d in DIM_ORDER}, "composite": 0.0},
+    }
 
 
 def dedup_soft(items: List[str], thresh: float = 0.85) -> List[str]:
@@ -682,6 +900,83 @@ def build_overall_from_dims(dim_blocks: Dict[str, Any],
 
 
 # ----------------- Markdown 渲染 -----------------
+def _render_bp_review_sections(bp: Dict[str, Any]) -> List[str]:
+    """将 bp_review 渲染为 Markdown 章节列表。"""
+    lines: List[str] = []
+    lines.append("## 叙事型专家评审（BP / 全文视角）")
+    lines.append("")
+    sr = bp.get("short_review") or {}
+    lp = sr.get("lead_paragraphs") or []
+    if lp:
+        lines.append("### 简短评审")
+        lines.append("")
+        for p in lp:
+            t = str(p).strip()
+            if t:
+                lines.append(t)
+                lines.append("")
+    dol = sr.get("dimension_one_line") or {}
+    if isinstance(dol, dict) and dol:
+        lines.append("**五维一句话**")
+        lines.append("")
+        for dim in DIM_ORDER:
+            lab = DIM_LABELS_ZH.get(dim, dim)
+            lines.append(f"- **{lab}**：{str(dol.get(dim, '') or '').strip()}")
+        lines.append("")
+    svn = (sr.get("system_vs_narrative_note") or "").strip()
+    if svn:
+        lines.append("**叙事评审 vs 系统量化评分**")
+        lines.append("")
+        lines.append(svn)
+        lines.append("")
+    mt = (sr.get("material_timeliness") or "").strip()
+    if mt:
+        lines.append("**材料时效与版本**")
+        lines.append("")
+        lines.append(mt)
+        lines.append("")
+    dr = bp.get("detailed_review") or {}
+    if isinstance(dr, dict) and dr:
+        lines.append("### 详细评审（五维）")
+        lines.append("")
+        for dim in DIM_ORDER:
+            lab = DIM_LABELS_ZH.get(dim, dim)
+            blk = dr.get(dim) or {}
+            if not isinstance(blk, dict):
+                continue
+            lines.append(f"#### {lab}（{dim}）")
+            lines.append("")
+            adv = blk.get("advantages") or []
+            if adv:
+                lines.append("**优势（基于材料可引用处）**")
+                for x in adv:
+                    lines.append(f"- {str(x).strip()}")
+                lines.append("")
+            gaps = blk.get("gaps") or []
+            if gaps:
+                lines.append("**不足 / 缺口**")
+                for x in gaps:
+                    lines.append(f"- {str(x).strip()}")
+                lines.append("")
+            ddq = blk.get("due_diligence_questions") or []
+            if ddq:
+                lines.append("**评审追问（DD）**")
+                for x in ddq:
+                    lines.append(f"- {str(x).strip()}")
+                lines.append("")
+    scores = bp.get("subjective_scores_10") or {}
+    if isinstance(scores, dict) and scores:
+        lines.append("### 叙事主观分（0–10，非系统自动算法）")
+        lines.append("")
+        lines.append("| 维度 | 主观分 |")
+        lines.append("|---|---:|")
+        for dim in DIM_ORDER:
+            lines.append(f"| {dim} | {scores.get(dim, '')} |")
+        lines.append(f"| composite（综合） | {scores.get('composite', '')} |")
+        lines.append("")
+    return lines
+
+
 def _bar(v: float, n: int = 20) -> str:
     try:
         v = float(v)
@@ -705,10 +1000,21 @@ def render_markdown(opinion: Dict[str, Any]) -> str:
     lines.append(f"- 生成时间：{meta.get('generated_at', '')}")
     lines.append(f"- 模式：{meta.get('mode', '')}")
     lines.append(f"- 模型/引擎：{meta.get('model', '')}（provider={meta.get('provider', '')}）")
+    if meta.get("expert_pipeline_mode"):
+        lines.append(f"- 专家管线模式：**{meta.get('expert_pipeline_mode')}**（qa_evidence=问答驱动；document_review=全文/BP 优先）")
     lines.append("")
+    lines.append(
+        "> **双轨说明**：**叙事型专家评审**依赖提案全文摘录、维度结构化摘要与大模型常识；"
+        "下方 **总体意见** 中的综合评分、verdict、质量闸门来自 **问答流水线与后处理算法**。"
+        "**两类结论证据来源不同，数值不可直接等同。**"
+    )
+    lines.append("")
+    bp_rev = opinion.get("bp_review") or {}
+    if bp_rev:
+        lines.extend(_render_bp_review_sections(bp_rev))
 
-    # 总体
-    lines.append("## 总体意见")
+    # 总体（系统量化回显）
+    lines.append("## 总体意见（系统量化与 verdict）")
     lines.append(f"- 综合评分（回显）：{overall.get('overall_score_echo', 0.0):.3f}  {_bar(overall.get('overall_score_echo', 0.0))}")
     lines.append(f"- 综合信心度（回显）：{overall.get('confidence_echo', 0.0):.3f}  {_bar(overall.get('confidence_echo', 0.0))}")
     lines.append("")
@@ -816,9 +1122,18 @@ def render_markdown(opinion: Dict[str, Any]) -> str:
 
 # ----------------- 主流程 -----------------
 def main():
-    ap = argparse.ArgumentParser(description="Generate AI expert opinion (dimension-first, QA-grounded).")
+    ap = argparse.ArgumentParser(
+        description="Generate AI expert opinion (dimensions + optional BP narrative layer)."
+    )
     ap.add_argument("--pid", type=str, default="", help="提案 ID；缺省则自动选择最新项目")
-    ap.add_argument("--model", type=str, default=OPENAI_EXPERT_MODEL, help="OpenAI 模型名（默认使用独立专家模型）")
+    ap.add_argument("--model", type=str, default="", help="专家评审专用模型（默认 EXPERT_OPINION_MODEL / OPENAI_MODEL）")
+    ap.add_argument(
+        "--mode",
+        type=str,
+        default="qa_evidence",
+        choices=["qa_evidence", "document_review"],
+        help="qa_evidence：问答+全文摘录混合（默认）；document_review：以全文+维度摘要为主，问答为辅",
+    )
     ap.add_argument("--dry_run", action="store_true", help="仅生成 prompt，不调用 LLM")
     ap.add_argument("--no_markdown", action="store_true", help="不输出 Markdown，仅 JSON")
     ap.add_argument("--force_local", action="store_true", help="强制使用本地规则版，不调用 LLM（用于调试）")
@@ -827,6 +1142,8 @@ def main():
     pid = args.pid.strip() or get_context_proposal_id() or detect_latest_pid()
     if not pid:
         raise RuntimeError("未检测到可用项目（refined_answers 下无 postproc/metrics.json + final_payload.json）。")
+
+    mode = (args.mode or "qa_evidence").strip().lower()
 
     postproc_dir = REFINED_ROOT / pid / "postproc"
     metrics_path = postproc_dir / "metrics.json"
@@ -839,7 +1156,12 @@ def main():
     metrics = read_json(metrics_path)
     final_payload = read_json(payload_path)
 
-    dim_inputs = build_dim_inputs(metrics, final_payload)
+    max_qas = 2 if mode == "document_review" else 6
+    dim_inputs = build_dim_inputs(metrics, final_payload, max_qas=max_qas)
+
+    full_text_bundle = load_proposal_full_text_excerpt(pid)
+    dim_struct_summary = build_dimensions_v2_exec_summary(pid)
+    style_hints = load_golden_style_hints()
 
     out_dir = EXPERT_DIR / pid
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -847,16 +1169,24 @@ def main():
     json_path = out_dir / "ai_expert_opinion.json"
     md_path = out_dir / "ai_expert_opinion.md"
 
-    # 先保存 prompt（即便是本地版，也方便调试看看输入长什么样）
-    system_prompt = build_dim_system_prompt()
-    user_payload = build_dim_user_payload(pid, dim_inputs)
-    write_json(prompt_path, {
-        "system": system_prompt,
-        "user": user_payload
-    })
+    system_prompt = build_expert_system_prompt(mode)
+    user_payload = build_expert_user_payload(
+        pid, mode, dim_inputs, full_text_bundle, dim_struct_summary, style_hints
+    )
+    write_json(
+        prompt_path,
+        {
+            "system": system_prompt,
+            "user": user_payload,
+            "mode": mode,
+            "golden_hints_path": str(GOLDEN_HINTS_PATH),
+        },
+    )
 
-    # =========== 维度级点评：优先 LLM，失败则回退本地 ===========
+    resolved_model = resolve_expert_model(args.model)
+
     dim_op_raw: Dict[str, Any] = {}
+    bp_raw: Dict[str, Any] = {}
     used_model = ""
     used_mode = ""
 
@@ -869,22 +1199,27 @@ def main():
     if use_llm:
         try:
             resp = call_openai_chat(
-                model=args.model,
+                model=resolved_model,
                 system_prompt=system_prompt,
                 user_payload=user_payload,
                 temperature=0.25,
-                max_tokens=max(800, EXPERT_MAX_TOKENS),
+                max_tokens=max(1200, EXPERT_MAX_TOKENS),
                 seed=None,
                 max_retries=max(1, EXPERT_MAX_RETRIES),
+                timeout=(EXPERT_TIMEOUT_CONNECT, EXPERT_TIMEOUT_READ),
             )
+            if not isinstance(resp, dict):
+                raise RuntimeError("LLM 返回非 JSON 对象")
             if "dimensions" not in resp:
                 raise RuntimeError("LLM 返回 JSON 中缺少 'dimensions' 字段")
-            dim_op_raw = resp["dimensions"] or {}
-            used_model = args.model
-            used_mode = "llm"
+            dim_op_raw = resp.get("dimensions") or {}
+            bp_raw = resp.get("bp_review") or {}
+            used_model = resolved_model
+            used_mode = "llm_unified"
         except Exception as e:
-            print(f"⚠️ LLM 生成维度点评失败，将启用纯本地规则回退：{e}")
+            print(f"⚠️ LLM 生成专家意见失败，将启用纯本地规则回退：{e}")
             dim_op_raw = {}
+            bp_raw = {}
             used_model = "local_rules"
             used_mode = "local_fallback"
     else:
@@ -892,10 +1227,26 @@ def main():
         used_mode = "local_forced"
 
     if not dim_op_raw:
-        # 纯本地规则版
         dim_op_raw = build_local_dim_blocks(metrics, final_payload)
 
-    # 兜底：保证所有维度都有字段 & 文本清洗/去重 + 收紧条数
+    bp_review_clean = sanitize_bp_review(bp_raw)
+    sr_chk = (bp_review_clean.get("short_review") or {}) if bp_review_clean else {}
+    need_bp_placeholder = (
+        not bp_review_clean
+        or not sr_chk.get("lead_paragraphs")
+        or used_mode != "llm_unified"
+    )
+    if need_bp_placeholder:
+        if used_mode != "llm_unified":
+            reason = "LLM 未调用或调用失败，无法生成叙事型 bp_review。"
+        elif not sr_chk.get("lead_paragraphs"):
+            reason = "LLM 返回的 bp_review 缺少 short_review.lead_paragraphs。"
+        else:
+            reason = "bp_review 为空或解析失败。"
+        bp_review_clean = build_local_bp_review_placeholder(
+            pid, full_text_bundle, dim_struct_summary, reason=reason
+        )
+
     cleaned_dims: Dict[str, Any] = {}
     metrics_dims = metrics.get("dimensions", {}) or {}
     for dim in DIM_ORDER:
@@ -907,7 +1258,6 @@ def main():
         recs = dedup_soft(clean_list(blk.get("recommendations") or []))[:4]
         summary = clean_text(blk.get("summary") or "")
 
-        # 如果维度几乎没有信息，补一条兜底 summary
         if not summary and not strengths and not concerns:
             label = DIM_LABELS_ZH.get(dim, dim)
             summary = (
@@ -922,37 +1272,50 @@ def main():
             "summary": summary,
             "strengths": strengths,
             "concerns": concerns,
-            "recommendations": recs
+            "recommendations": recs,
         }
 
     overall_block = build_overall_from_dims(
         dim_blocks=cleaned_dims,
         metrics_overall=metrics.get("overall", {}) or {},
-        metrics_dims=metrics_dims
+        metrics_dims=metrics_dims,
     )
 
-    # 拼接最终 JSON
+    basis = list(overall_block.get("basis") or [])
+    basis.append(
+        "若上文存在「叙事型专家评审」章节：该部分依据全文摘录与维度结构化摘要，"
+        "与 verdict 所依赖的问答算法证据链不同，二者应并列阅读。"
+    )
+    overall_block["basis"] = basis
+
     opinion: Dict[str, Any] = {
         "meta": {
             "pid": pid,
             "generated_at": now_str(),
             "model": used_model,
             "mode": used_mode,
+            "expert_pipeline_mode": mode,
+            "llm_model_resolved": resolved_model,
             "provider": PROVIDER,
             "sources": {
                 "metrics_path": str(metrics_path),
-                "final_payload_path": str(payload_path)
-            }
+                "final_payload_path": str(payload_path),
+                "full_text_path": full_text_bundle.get("path", ""),
+                "dimensions_v2_path": dim_struct_summary.get("path", ""),
+                "golden_style_hints": str(GOLDEN_HINTS_PATH),
+            },
         },
         "overall_opinion": overall_block,
         "dimensions": cleaned_dims,
+        "bp_review": bp_review_clean,
         "scoring_explainer": {
-            # 只回显最关键的几项，便于报告中解释“分是怎么算出来的”
             "consistency_weight": float((metrics.get("config_used") or {}).get("consistency_weight", 0.20) or 0.20),
             "dimension_weight": {
-                k: float(v) for k, v in ((metrics.get("config_used") or {}).get("dimension_weight") or {}).items()
-            }
-        }
+                k: float(v)
+                for k, v in ((metrics.get("config_used") or {}).get("dimension_weight") or {}).items()
+            },
+            "note": "叙事主观分见 bp_review.subjective_scores_10，与 metrics 算法分分离。",
+        },
     }
 
     write_json(json_path, opinion)
@@ -963,7 +1326,7 @@ def main():
     print(f"✅ ai_expert_opinion.json -> {json_path}")
     if not args.no_markdown:
         print(f"✅ ai_expert_opinion.md   -> {md_path}")
-    print(f"🎯 专家评审生成完成（{used_mode} 模式）。")
+    print(f"🎯 专家评审生成完成（engine={used_mode}，pipeline_mode={mode}）。")
 
 
 if __name__ == "__main__":

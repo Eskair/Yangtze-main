@@ -51,6 +51,20 @@ python -m src.tools.<模块名>
 
 专家评审结论是否 `INSUFFICIENT_EVIDENCE` 仍以 metrics 中的 **`quality_gates.pass`** 等为准；详见 `ai_expert_opinion.py` 与生成报告脚本。
 
+### 专家评审双轨（`ai_expert_opinion.py` v5）
+
+- **系统量化轨**：`metrics` + 选中问答 → 各维点评与 `verdict`，由后处理与问答证据驱动。
+- **叙事型 BP 轨**：`prepared/<pid>/full_text.txt` + `extracted/<pid>/dimensions_v2.json` 摘要 + `src/config/expert_golden/style_hints.md` → JSON 字段 **`bp_review`**（简短/详细五维、叙事主观分）。
+
+**`--mode`**：`qa_evidence`（默认，每维较多问答样本）| `document_review`（全文优先，每维仅 2 条问答辅证）。
+
+```cmd
+python src\tools\ai_expert_opinion.py --pid YOUR_PID --mode qa_evidence
+python src\tools\ai_expert_opinion.py --pid YOUR_PID --mode document_review
+```
+
+叙事轨建议配置 **`EXPERT_OPINION_MODEL=gpt-4o`** 与较大 **`EXPERT_HTTP_TIMEOUT_READ`**（见 `.env.example`）。
+
 ---
 
 ## 测试

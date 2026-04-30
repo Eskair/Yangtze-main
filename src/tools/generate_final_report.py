@@ -394,6 +394,11 @@ def main():
     report_lines.append("")
     report_lines.append("_本报告由 AI 辅助评审系统自动生成，供内部专家和决策委员会参考使用。_")
     report_lines.append("")
+    report_lines.append(
+        "> **关于两类结论**：**系统量化**（`metrics`、各维得分、verdict、质量闸门）来自**问答与后处理算法**；"
+        "**叙事型 BP 评审**（若 `ai_expert_opinion` 中已生成）来自**全文/维度摘要 + 大模型**，与前者**证据链不同**，**不可将两类分数直接等同**。"
+    )
+    report_lines.append("")
 
     # 0. 一页摘要（如果有 ai_expert_opinion.json）
     exec_summary_md = build_executive_summary(expert_json)
